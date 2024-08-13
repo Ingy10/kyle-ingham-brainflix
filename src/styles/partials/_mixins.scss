@@ -1,0 +1,108 @@
+@use "./fonts" as *;
+@use "./variables" as *;
+
+@mixin desktop-header-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 2.06rem;
+  line-height: 2.75rem;
+}
+
+@mixin desktop-section-header-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+@mixin desktop-subheader-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.375rem;
+}
+
+@mixin desktop-body-font {
+  font-family: $default-font-stack;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.375rem;
+}
+
+@mixin desktop-label-button-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+@mixin mobile-header-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin mobile-section-header-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+@mixin mobile-subheader-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+}
+
+@mixin mobile-body-font {
+  font-family: $default-font-stack;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+}
+
+@mixin mobile-label-button-font {
+  font-family: $default-font-stack;
+  font-weight: 700;
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin button() {
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: $p-color-bf-blue;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+  text-decoration: none;
+  width: 100%;
+  padding: 0.5rem;
+  @include mobile-label-button-font();
+  &--icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    background-color: $s-color-bf-d-blue;
+  }
+}

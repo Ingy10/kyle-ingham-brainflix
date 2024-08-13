@@ -1,0 +1,22 @@
+@use "./fonts" as *;
+
+$default-font-stack: "AvenirNextLTPro", Arial, sans-serif;
+
+$p-color-bf-black: #323232;
+$p-color-bf-blue: #0095ff;
+$p-color-silver: #afafaf;
+$p-color-white: #ffffff;
+$s-color-bf-d-black: #000000;
+$s-color-bf-d-blue: #0065ad;
+$s-color-mercury: #e1e1e1;
+$s-color-alabaster: #fafafa;
+
+$half-unit: 0.5rem;
+$full-unit: 1rem;
+$full-plus-half-unit: 1.5rem;
+$double-unit: 2rem;
+
+$min-width: 320px;
+$max-width: 1920px;
+$tablet: 768px;
+$desktop: 1280px;
