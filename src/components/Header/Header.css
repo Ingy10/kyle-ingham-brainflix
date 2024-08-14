@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "avenirNextLTPro";
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf"), url("../../assets/fonts/AvenirNextLTPro.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "avenirNextLTPro";
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf"), url("../../assets/fonts/AvenirNextLTProBold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "avenirNextLTPro";
+  src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf"), url("../../assets/fonts/AvenirNextLTProDemi.ttf");
+  font-weight: 600;
+}
+.header {
+  border: 1px solid green;
+}
+.header__video-player {
+  aspect-ratio: 16/9;
+  width: 100%;
+  background-color: #000000;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid orange;
+}/*# sourceMappingURL=Header.css.map */
