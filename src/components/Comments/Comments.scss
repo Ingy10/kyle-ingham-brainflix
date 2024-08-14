@@ -1,0 +1,44 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.comments {
+//   border: 1px solid pink;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  &__user-avatar {
+    // border: 1px solid green;
+    padding-top: $full-plus-half-unit;
+    padding-right: $half-unit;
+    &--container {
+      @include avatarContainer();
+    }
+    &--img {
+      @include avatarImage();
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  &__form-title {
+    @include mobile-subheader-font();
+    color: $p-color-silver;
+    // border: 1px solid orange;
+    padding-bottom: 0.25rem;
+  }
+  &__form-input {
+    background-color: $s-color-alabaster;
+    padding: 0.75rem;
+    border: 1px solid $p-color-silver;
+    border-radius: 4px;
+  }
+  &__button-wrapper {
+    position: relative;
+    margin-top: $full-unit;
+  }
+  &__form-button {
+    @include button();
+  }
+}

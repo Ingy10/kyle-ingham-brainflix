@@ -106,3 +106,20 @@
     background-color: $s-color-bf-d-blue;
   }
 }
+
+@mixin avatarContainer() {
+  position: relative;
+  overflow: hidden;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: $s-color-mercury;
+  border-radius: 50%;
+}
+
+@mixin avatarImage() {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  top: 0;
+  left: -5px;
+}
