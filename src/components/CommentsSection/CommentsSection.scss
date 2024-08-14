@@ -20,6 +20,8 @@
 
   &__content {
     width: 90%;
+    padding-left: $full-unit;
+    border: 1px solid orange;
   }
 
   &__header {

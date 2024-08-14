@@ -2,14 +2,12 @@
 @use "../../styles/partials/variables" as *;
 
 .comments {
-  // border: 1px solid pink;
   display: flex;
   justify-content: center;
   width: 90%;
   padding-bottom: $full-unit;
   border-bottom: 2px solid $s-color-mercury;
   &__user-avatar {
-    // border: 1px solid green;
     padding-top: $full-plus-half-unit;
     display: flex;
     width: 10%;
@@ -24,7 +22,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    // border: 1px solid red;
+    padding-left: $full-unit;
   }
   &__input-wrapper {
     display: flex;
@@ -33,7 +31,6 @@
   &__form-title {
     @include mobile-subheader-font();
     color: $p-color-silver;
-    // border: 1px solid orange;
     padding-bottom: 0.25rem;
   }
   &__form-input {
