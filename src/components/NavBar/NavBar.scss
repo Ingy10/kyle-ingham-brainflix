@@ -73,5 +73,10 @@
   }
   &__CTA-button-upload {
     @include button();
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    &--icon {
+      width: 1.4rem;
+    }
   }
 }

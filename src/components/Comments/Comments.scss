@@ -10,7 +10,7 @@
   &__user-avatar {
     padding-top: $full-plus-half-unit;
     display: flex;
-    width: 10%;
+    width: 15%;
     &--container {
       @include avatarContainer();
     }
@@ -21,8 +21,7 @@
   &__form {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    padding-left: $full-unit;
+    width: 85%;
   }
   &__input-wrapper {
     display: flex;
@@ -48,5 +47,8 @@
   }
   &__form-button {
     @include button();
+    &--icon {
+      width: 1.2rem;
+    }
   }
 }

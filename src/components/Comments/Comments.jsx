@@ -21,7 +21,7 @@ function Comments() {
               className="comments__form-input"
               id="comment"
               rows="7"
-              cols="30"
+              cols="20"
               placeholder="Add a new comment"
             ></textarea>
           </div>
