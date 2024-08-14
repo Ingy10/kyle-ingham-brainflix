@@ -7,7 +7,7 @@ function VideoList() {
   return (
     <>
       <section className="video-list">
-        <h2 className="video-list__title">Next Videos</h2>
+        <h2 className="video-list__title">NEXT VIDEOS</h2>
         <ul className="video-list__container">
           {videos.map((video) => (
             <li className="video-list__item" key={video.id}>
