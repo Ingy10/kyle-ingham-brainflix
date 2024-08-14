@@ -13,17 +13,37 @@
   &__video-data {
     display: flex;
     width: 100%;
-    border: 1px solid pink;
     @include mobile-subheader-font();
     color: $p-color-silver;
+    border-bottom: 2px solid $s-color-mercury;
   }
   &__video-container--1 {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__video-data--1,
+  &__video-data--2 {
+    height: 50%;
+    display: flex;
+    align-items: center;
   }
   &__video-data--1 {
     color: $p-color-bf-black;
   }
+  &__video-data--3,
+  &__video-data--4 {
+    display: flex;
+    padding: 0;
+  }
+  &__video-data--view-icon,
+  &__video-data--like-icon {
+    padding-right: $half-unit;
+  }
   &__video-description {
     @include mobile-body-font();
+  }
+  &__number-of-comments-text {
+    @include mobile-subheader-font();
   }
 }
