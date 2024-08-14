@@ -1,0 +1,29 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main {
+  background-color: $p-color-white;
+  padding: $full-unit;
+  &__container-title {
+    border-bottom: 2px solid $s-color-mercury;
+  }
+  &__title {
+    @include mobile-header-font();
+  }
+  &__video-data {
+    display: flex;
+    width: 100%;
+    border: 1px solid pink;
+    @include mobile-subheader-font();
+    color: $p-color-silver;
+  }
+  &__video-container--1 {
+    width: 50%;
+  }
+  &__video-data--1 {
+    color: $p-color-bf-black;
+  }
+  &__video-description {
+    @include mobile-body-font();
+  }
+}

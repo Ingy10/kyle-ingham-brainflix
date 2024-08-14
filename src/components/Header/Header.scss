@@ -1,0 +1,12 @@
+@use "../../styles/partials/variables" as *;
+
+.header {
+  border: 1px solid green;
+  &__video-player {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background-color: $s-color-bf-d-black;
+    object-fit: cover;
+    border: 1px solid orange;
+  }
+}

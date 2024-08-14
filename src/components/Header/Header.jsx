@@ -5,10 +5,14 @@ import Video from "../../assets/images/Upload-video-preview.jpg";
 function Header() {
   return (
     <>
-      <section className="header">
+      <header className="header">
         <NavBar />
-        <video src={Video} poster={Video}></video>
-      </section>
+        <video
+          className="header__video-player"
+          src={Video}
+          poster={Video}
+        ></video>
+      </header>
     </>
   );
 }
