@@ -1,0 +1,41 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.comments-section {
+  width: 90%;
+  border-bottom: 2px solid $s-color-mercury;
+
+  &__comment-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__avatar-wrapper {
+    width: 10%;
+    padding-top: $full-unit;
+  }
+  &__avatar-container {
+    @include avatarContainer();
+  }
+
+  &__content {
+    width: 90%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    @include mobile-subheader-font();
+  }
+
+  &__date {
+    color: $p-color-silver;
+  }
+
+  &__text {
+    @include mobile-body-font();
+    color: $s-color-bf-d-black;
+    margin: 0;
+    padding-bottom: $full-unit;
+  }
+}

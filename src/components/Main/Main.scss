@@ -3,7 +3,9 @@
 
 .main {
   background-color: $p-color-white;
-  padding: $full-unit;
+  padding-left: 5%;
+  padding-right: 5%;
+  // border: 1px solid orange;
   &__container-title {
     border-bottom: 2px solid $s-color-mercury;
   }

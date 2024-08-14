@@ -2,14 +2,17 @@
 @use "../../styles/partials/variables" as *;
 
 .comments {
-//   border: 1px solid pink;
+  // border: 1px solid pink;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 90%;
+  padding-bottom: $full-unit;
+  border-bottom: 2px solid $s-color-mercury;
   &__user-avatar {
     // border: 1px solid green;
     padding-top: $full-plus-half-unit;
-    padding-right: $half-unit;
+    display: flex;
+    width: 10%;
     &--container {
       @include avatarContainer();
     }
@@ -20,7 +23,12 @@
   &__form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
+    // border: 1px solid red;
+  }
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
   }
   &__form-title {
     @include mobile-subheader-font();
@@ -33,6 +41,9 @@
     padding: 0.75rem;
     border: 1px solid $p-color-silver;
     border-radius: 4px;
+    &::placeholder {
+      color: $p-color-bf-black;
+    }
   }
   &__button-wrapper {
     position: relative;

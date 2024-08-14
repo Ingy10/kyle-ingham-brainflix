@@ -1,6 +1,7 @@
 import "./Comments.scss";
 import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/icons/add_comment.svg";
+import CommentsSection from "../CommentsSection/CommentsSection.jsx";
 
 function Comments() {
   return (
@@ -12,15 +13,18 @@ function Comments() {
           </div>
         </div>
         <form className="comments__form">
-          <label className="comments__form-title" name="comment">
-            JOIN THE CONVERSATION
-          </label>
-          <textarea
-            className="comments__form-input"
-            id="comment"
-            rows="7"
-            cols="30"
-          ></textarea>
+          <div className="comments__input-wrapper">
+            <label className="comments__form-title" name="comment">
+              JOIN THE CONVERSATION
+            </label>
+            <textarea
+              className="comments__form-input"
+              id="comment"
+              rows="7"
+              cols="30"
+              placeholder="Add a new comment"
+            ></textarea>
+          </div>
           <div className="comments__button-wrapper">
             <button className="comments__form-button " type="submit">
               COMMENT
@@ -29,6 +33,7 @@ function Comments() {
           </div>
         </form>
       </section>
+      <CommentsSection />
     </>
   );
 }

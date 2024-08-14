@@ -5,11 +5,11 @@ import VideoData from "../src/components/VideoData/VideoData";
 
 function App() {
   return (
-    <>
+    <section className="page">
       <Header />
       <Main />
       {/* <VideoData /> */}
-    </>
+    </section>
   );
 }
 
