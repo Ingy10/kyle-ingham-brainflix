@@ -122,9 +122,9 @@
     }
   }
   &__CTA-button-upload {
-    @include button();
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+    @include button();
     @include tablet() {
       display: flex;
       padding-bottom: 0.75rem;

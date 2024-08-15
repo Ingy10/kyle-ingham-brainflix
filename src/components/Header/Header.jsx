@@ -11,7 +11,7 @@ function Header() {
       <header className="header">
         <NavBar />
         <div className="header__video-wrapper-container">
-          <div class="header__video-wrapper">
+          <div className="header__video-wrapper">
             <video
               className="header__video-player"
               src={Video}

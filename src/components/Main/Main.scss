@@ -85,10 +85,4 @@
   &__video-description {
     @include mobile-body-font();
   }
-  &__number-of-comments-text {
-    @include mobile-subheader-font();
-    @include tablet() {
-      @include desktop-section-header-font();
-    }
-  }
 }
