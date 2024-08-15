@@ -3,8 +3,10 @@
 
 .comments {
   width: 100%;
-  border: 1px solid blue;
+  // border: 1px solid blue;
   &__number-of-comments-text {
+    padding-top: $half-unit;
+    padding-bottom: $half-unit;
     @include mobile-subheader-font();
     @include tablet() {
       @include desktop-section-header-font();
@@ -20,6 +22,10 @@
     @include tablet() {
       padding-bottom: $full-plus-half-unit;
       padding-top: $half-unit;
+    }
+    @include desktop() {
+      box-sizing: border-box;
+      padding-right: 5%;
     }
   }
   &__user-avatar {
@@ -86,10 +92,10 @@
     }
   }
   &__form-button {
+    padding-top: 0.66rem;
+    padding-bottom: 0.66rem;
     @include button();
     @include tablet() {
-      padding-top: 0.66rem;
-      padding-bottom: 0.66rem;
       @include desktop-label-button-font();
     }
     &--icon {

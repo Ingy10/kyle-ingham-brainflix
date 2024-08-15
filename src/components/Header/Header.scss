@@ -25,6 +25,7 @@
       position: absolute;
       background-color: $s-color-bf-opaque-black;
       bottom: 5%;
+      border-radius: 6px;
       @include tablet() {
         bottom: 4%;
       }

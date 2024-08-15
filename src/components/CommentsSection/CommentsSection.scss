@@ -24,6 +24,9 @@
     padding-left: $full-unit;
     padding-top: $full-unit;
     // border: 1px solid red;
+    @include desktop() {
+      padding-right: 5%;
+    }
   }
 
   &__header {
@@ -35,11 +38,17 @@
   &__name {
     margin: 0;
     padding-bottom: 0.25rem;
+    @include tablet() {
+      @include desktop-section-header-font();
+    }
   }
 
   &__date {
     color: $p-color-silver;
     margin: 0;
+    @include tablet() {
+      @include desktop-section-header-font();
+    }
   }
 
   &__text {
@@ -47,5 +56,8 @@
     color: $s-color-bf-d-black;
     margin: 0;
     padding-bottom: $full-unit;
+    @include tablet() {
+      @include desktop-body-font();
+    }
   }
 }

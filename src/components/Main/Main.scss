@@ -6,16 +6,23 @@
   padding-left: 5%;
   padding-right: 5%;
 
-  border: 1px solid orange;
+  // border: 1px solid orange;
   @include tablet() {
     width: 90%;
+  }
+  @include desktop() {
+    width: 66%;
+    padding: 0;
+    padding-top: $full-unit;
   }
   &__container-title {
     border-bottom: 2px solid $s-color-mercury;
     @include tablet() {
       border: none;
-      // padding-bottom: $full-unit;
       padding-top: $full-unit;
+    }
+    @include desktop() {
+      padding-right: 5%;
     }
   }
   &__title {
@@ -26,21 +33,24 @@
     }
   }
   &__video-data {
+    box-sizing: border-box;
     display: flex;
     width: 100%;
     @include mobile-subheader-font();
     color: $p-color-silver;
     border-bottom: 2px solid $s-color-mercury;
-    // border: 1px solid green;
     @include tablet() {
       justify-content: space-between;
+      @include desktop-section-header-font();
+    }
+    @include desktop() {
+      padding-right: 5%;
     }
   }
   &__video-container--1 {
     width: 50%;
     display: flex;
     flex-direction: column;
-    // border: 1px solid lightcoral;
     @include tablet() {
       flex-direction: row;
       width: auto;
@@ -56,9 +66,9 @@
     height: 50%;
     display: flex;
     align-items: center;
-    // border: 1px solid lightseagreen;
     @include tablet() {
       height: auto;
+      margin-bottom: -5px;
     }
   }
   &__video-data--1 {
@@ -67,11 +77,15 @@
       padding-right: 2rem;
     }
   }
+  &__video-data--2 {
+    @include tablet() {
+      @include desktop-body-font();
+    }
+  }
   &__video-data--3,
   &__video-data--4 {
     display: flex;
     padding: 0;
-    // border: 1px solid orange;
   }
   &__video-data--3 {
     @include tablet() {
@@ -82,8 +96,31 @@
   &__video-data--view-icon,
   &__video-data--like-icon {
     padding-right: $half-unit;
+    @include tablet() {
+      margin-bottom: -5px;
+    }
+  }
+  &__video-data--view-icon {
+    width: 2rem;
+  }
+  &__video-data--like-icon {
+    width: 1.7rem;
+  }
+  &__video-data--view-text,
+  &__video-data--like-text {
+    @include tablet() {
+      margin-bottom: 0.8rem;
+      @include desktop-body-font();
+    }
   }
   &__video-description {
     @include mobile-body-font();
+    @include tablet() {
+      padding-top: $half-unit;
+      @include desktop-body-font();
+    }
+    @include desktop() {
+      padding-right: 5%;
+    }
   }
 }

@@ -24,12 +24,17 @@
     }
   }
 
+  &__logo-image {
+    @include tablet() {
+      width: 7.5rem;
+    }
+  }
+
   &__content-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: $full-unit;
-    // border: 1px solid purple;
     @include tablet() {
       width: 66%;
       flex-direction: row;
@@ -122,12 +127,11 @@
     }
   }
   &__CTA-button-upload {
-    padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
     @include button();
     @include tablet() {
       display: flex;
-      padding-bottom: 0.75rem;
       @include desktop-label-button-font();
     }
     &--icon {

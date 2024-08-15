@@ -26,7 +26,7 @@ function Main() {
             </div>
             <div className="main__video-data--4">
               <img className="main__video-data--like-icon" src={likeIcon} />
-              <p>Likes</p>
+              <p className="main__video-data--like-text">Likes</p>
             </div>
           </div>
         </section>

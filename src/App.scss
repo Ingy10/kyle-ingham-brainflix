@@ -20,10 +20,12 @@ body {
     align-items: center;
     @include desktop() {
       flex-direction: row;
+      align-items: flex-start;
+      width: 80%;
     }
   }
 }
 .logo-image {
-  max-height: 1.5625; // max sizes for all screen sizes as per style guide
+  max-height: 1.5625rem; // max sizes for all screen sizes as per style guide
   max-width: 7.5rem;
 }
