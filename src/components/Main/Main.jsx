@@ -35,8 +35,9 @@ function Main() {
             (this will need to be accessed via the data provided in our API)
           </p>
         </section>
+        <Comments />
       </main>
-      <Comments />
+      {/* <Comments /> */}
     </>
   );
 }

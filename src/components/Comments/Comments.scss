@@ -2,7 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .comments {
-  width: 90%;
+  width: 100%;
+  border: 1px solid blue;
   &__number-of-comments-text {
     @include mobile-subheader-font();
     @include tablet() {

@@ -5,7 +5,8 @@
   background-color: $p-color-white;
   padding-left: 5%;
   padding-right: 5%;
-  // border: 1px solid orange;
+
+  border: 1px solid orange;
   @include tablet() {
     width: 90%;
   }

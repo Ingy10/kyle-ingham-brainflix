@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .comments-section {
-  width: 90%;
+  width: 100%;
   border-bottom: 2px solid $s-color-mercury;
 
   &__comment-container {
@@ -12,17 +12,18 @@
   }
 
   &__avatar-wrapper {
-    width: 10%;
     padding-top: $full-unit;
+    padding-right: $full-unit;
   }
   &__avatar-container {
     @include avatarContainer();
   }
 
   &__content {
-    width: 85%;
+    flex-grow: 1;
     padding-left: $full-unit;
     padding-top: $full-unit;
+    // border: 1px solid red;
   }
 
   &__header {
@@ -35,7 +36,7 @@
     margin: 0;
     padding-bottom: 0.25rem;
   }
-  
+
   &__date {
     color: $p-color-silver;
     margin: 0;

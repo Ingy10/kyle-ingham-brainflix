@@ -8,8 +8,10 @@ function App() {
   return (
     <section className="page">
       <Header />
-      <Main />
-      <Footer />
+      <div className="page__section-desktop-flex">
+        <Main />
+        <Footer />
+      </div>
       {/* <VideoData /> */}
     </section>
   );
