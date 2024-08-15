@@ -1,12 +1,46 @@
 @use "../../styles/partials/variables" as *;
 
 .header {
-  border: 1px solid green;
+  &__video-wrapper {
+    position: relative;
+  }
   &__video-player {
     aspect-ratio: 16 / 9;
     width: 100%;
     background-color: $s-color-bf-d-black;
     object-fit: cover;
-    border: 1px solid orange;
+
+    &--play,
+    &--fullscreen,
+    &--volume {
+      position: absolute;
+      background-color: $s-color-bf-opaque-black;
+      bottom: 5%;
+    }
+    &--play {
+      left: 5%;
+      width: 2%;
+      padding: 1%;
+      padding-right: 2%;
+      padding-left: 2%;
+    }
+    &--fullscreen {
+      position: absolute;
+      right: 16%;
+      width: 4%;
+      padding-top: 0.3%;
+      padding-bottom: 0.3%;
+      padding-left: 1.5%;
+      padding-right: 1.5%;
+    }
+    &--volume {
+      position: absolute;
+      right: 7%;
+      width: 4%;
+      padding-top: 0.3%;
+      padding-bottom: 0.3%;
+      padding-left: 1.5%;
+      padding-right: 1.5%;
+    }
   }
 }
