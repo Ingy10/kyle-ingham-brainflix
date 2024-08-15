@@ -20,8 +20,7 @@ function Comments() {
             <textarea
               className="comments__form-input"
               id="comment"
-              rows="7"
-              cols="20"
+              rows="1"
               placeholder="Add a new comment"
             ></textarea>
           </div>

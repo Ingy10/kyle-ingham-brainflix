@@ -3,14 +3,20 @@
 
 .comments {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 90%;
   padding-bottom: $full-unit;
   border-bottom: 2px solid $s-color-mercury;
+  // border: 1px solid greenyellow;
+  @include tablet() {
+    padding-bottom: $full-plus-half-unit;
+    padding-top: $half-unit;
+  }
   &__user-avatar {
     padding-top: $full-plus-half-unit;
     display: flex;
-    width: 15%;
+    padding-right: $full-unit;
+    // border: 1px solid green;
     &--container {
       @include avatarContainer();
     }
@@ -21,22 +27,42 @@
   &__form {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    flex-grow: 1;
+    // border: 1px solid red;
+    @include tablet() {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 93%;
+    }
   }
   &__input-wrapper {
     display: flex;
     flex-direction: column;
+    // border: 1px solid yellow;
+    flex-grow: 1;
+    @include tablet() {
+      flex-grow: 1;
+      padding-right: $full-plus-half-unit;
+    }
   }
   &__form-title {
     @include mobile-subheader-font();
     color: $p-color-silver;
     padding-bottom: 0.25rem;
+    @include tablet() {
+      @include desktop-section-header-font();
+    }
   }
   &__form-input {
     background-color: $s-color-alabaster;
     padding: 0.75rem;
     border: 1px solid $p-color-silver;
     border-radius: 4px;
+    min-height: 5rem;
+    @include tablet() {
+      min-height: 0;
+    }
     &::placeholder {
       color: $p-color-bf-black;
     }
@@ -44,9 +70,18 @@
   &__button-wrapper {
     position: relative;
     margin-top: $full-unit;
+    // border: 1px solid purple;
+    @include tablet() {
+      width: 25%;
+    }
   }
   &__form-button {
     @include button();
+    @include tablet() {
+      padding-top: 0.66rem;
+      padding-bottom: 0.66rem;
+      @include desktop-label-button-font();
+    }
     &--icon {
       width: 1.2rem;
     }
