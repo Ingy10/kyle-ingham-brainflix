@@ -1,6 +1,5 @@
 import "./Main.scss";
 import Comments from "../Comments/Comments";
-import ViceoData from "../VideoData/VideoData";
 import viewIcon from "../../assets/icons/views.svg";
 import likeIcon from "../../assets/icons/likes.svg";
 
