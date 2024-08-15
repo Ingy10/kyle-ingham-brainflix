@@ -10,15 +10,20 @@ function Header() {
     <>
       <header className="header">
         <NavBar />
-        <div class="header__video-wrapper">
-          <video
-            className="header__video-player"
-            src={Video}
-            poster={Video}
-          ></video>
-          <img className="header__video-player--play" src={PlayIcon} />
-          <img className="header__video-player--fullscreen" src={FullScreen} />
-          <img className="header__video-player--volume" src={VolumeOff} />
+        <div className="header__video-wrapper-container">
+          <div class="header__video-wrapper">
+            <video
+              className="header__video-player"
+              src={Video}
+              poster={Video}
+            ></video>
+            <img className="header__video-player--play" src={PlayIcon} />
+            <img
+              className="header__video-player--fullscreen"
+              src={FullScreen}
+            />
+            <img className="header__video-player--volume" src={VolumeOff} />
+          </div>
         </div>
       </header>
     </>
