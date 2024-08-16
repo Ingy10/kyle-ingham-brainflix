@@ -1,9 +1,5 @@
 import "./Header.scss";
 import NavBar from "../NavBar/NavBar";
-import Video from "../../assets/images/Upload-video-preview.jpg";
-import PlayIcon from "../../assets/icons/play.svg";
-import FullScreen from "../../assets/icons/fullscreen.svg";
-import VolumeOff from "../../assets/icons/volume_up.svg";
 
 function Header({ selectedVideo }) {
   return (
@@ -14,7 +10,8 @@ function Header({ selectedVideo }) {
           <div className="header__video-wrapper">
             <video
               className="header__video-player"
-              src={selectedVideo.video}
+              src={selectedVideo.video + "?api_key=kyle"}
+              type="video/mp4"
               poster={selectedVideo.image}
               controls
             ></video>
