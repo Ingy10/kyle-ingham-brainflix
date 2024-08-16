@@ -9,6 +9,11 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 2px solid $s-color-mercury;
+    @include desktop() {
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
   }
 
   &__avatar-wrapper {
@@ -23,7 +28,6 @@
     flex-grow: 1;
     padding-left: $full-unit;
     padding-top: $full-unit;
-    // border: 1px solid red;
     @include desktop() {
       padding-right: 5%;
     }

@@ -5,7 +5,7 @@ import PlayIcon from "../../assets/icons/play.svg";
 import FullScreen from "../../assets/icons/fullscreen.svg";
 import VolumeOff from "../../assets/icons/volume_up.svg";
 
-function Header({selectedVideo}) {
+function Header({ selectedVideo }) {
   return (
     <>
       <header className="header">
@@ -16,13 +16,8 @@ function Header({selectedVideo}) {
               className="header__video-player"
               src={selectedVideo.video}
               poster={selectedVideo.image}
+              controls
             ></video>
-            <img className="header__video-player--play" src={PlayIcon} />
-            <img
-              className="header__video-player--fullscreen"
-              src={FullScreen}
-            />
-            <img className="header__video-player--volume" src={VolumeOff} />
           </div>
         </div>
       </header>

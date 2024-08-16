@@ -5,11 +5,8 @@
   background-color: $p-color-white;
   padding-left: 5%;
   padding-right: 5%;
+  width: 90%;
 
-  // border: 1px solid orange;
-  @include tablet() {
-    width: 90%;
-  }
   @include desktop() {
     width: 66%;
     padding: 0;
@@ -101,15 +98,19 @@
     }
   }
   &__video-data--view-icon {
-    width: 2rem;
+    @include tablet() {
+      width: 2rem;
+    }
   }
   &__video-data--like-icon {
-    width: 1.7rem;
+    @include tablet() {
+      width: 1.7rem;
+    }
   }
   &__video-data--view-text,
   &__video-data--like-text {
     @include tablet() {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
       @include desktop-body-font();
     }
   }

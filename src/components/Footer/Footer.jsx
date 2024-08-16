@@ -15,9 +15,12 @@ function VideoList({ filteredVideoList, setSelectedVideo }) {
               <li
                 className="video-list__item"
                 key={video.id}
-                onClick={() => handleVideoClick(video)}
+                // onClick={() => handleVideoClick(video)}
               >
-                <div className="video-list__thumbnail-container">
+                <div
+                  className="video-list__thumbnail-container"
+                  onClick={() => handleVideoClick(video)}
+                >
                   <img
                     className="video-list__thumbnail-image"
                     src={video.image}
@@ -25,7 +28,12 @@ function VideoList({ filteredVideoList, setSelectedVideo }) {
                   />
                 </div>
                 <div className="video-list__content-container">
-                  <p className="video-list__video-title">{video.title}</p>
+                  <p
+                    className="video-list__video-title"
+                    onClick={() => handleVideoClick(video)}
+                  >
+                    {video.title}
+                  </p>
                   <p className="video-list__video-author">{video.channel}</p>
                 </div>
               </li>
