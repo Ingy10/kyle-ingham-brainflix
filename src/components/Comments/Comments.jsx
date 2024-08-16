@@ -3,12 +3,12 @@ import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/icons/add_comment.svg";
 import CommentsSection from "../CommentsSection/CommentsSection.jsx";
 
-function Comments() {
+function Comments( {selectedVideo}) {
   return (
     <>
       <section className="comments">
         <div className="comments__number-of-comments">
-          <p className="comments__number-of-comments-text">3 Comments</p>
+          <p className="comments__number-of-comments-text">{selectedVideo.comments.length} Comments</p>
         </div>
         <div className="comments__section">
           <div className="comments__user-avatar">
@@ -37,7 +37,7 @@ function Comments() {
           </form>
         </div>
       </section>
-      <CommentsSection />
+      <CommentsSection selectedVideo={selectedVideo}/>
     </>
   );
 }

@@ -14,9 +14,9 @@ function App() {
 
   return (
     <section className="page">
-      <Header />
+      <Header selectedVideo={selectedVideo} />
       <div className="page__section-desktop-flex">
-        <Main />
+        <Main selectedVideo={selectedVideo} />
         <Footer
           filteredVideoList={filteredVideoList}
           setSelectedVideo={setSelectedVideo}
