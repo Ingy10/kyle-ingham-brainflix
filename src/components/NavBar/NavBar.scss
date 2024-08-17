@@ -129,6 +129,7 @@
   &__CTA-button-upload {
     padding-bottom: 0.75rem;
     padding-top: 0.75rem;
+    transition: 0.3s ease;
     @include button();
     @include tablet() {
       display: flex;

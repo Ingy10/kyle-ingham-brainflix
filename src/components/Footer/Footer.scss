@@ -57,10 +57,35 @@
     background-color: $p-color-bf-black;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      background-image: url("../../assets/icons/play.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      z-index: 1;
+    }
+    &:hover::before {
+      opacity: 1;
+    }
   }
 
   &__thumbnail-image {
     object-fit: cover;
+    width: 100%;
+    position: relative;
   }
 
   &__content-container {
@@ -76,11 +101,15 @@
     @include mobile-subheader-font();
     color: $p-color-bf-black;
     margin: 0;
+    text-decoration: underline;
+    text-decoration-color: #ffffff00;
+    transition: text-decoration-color 0.3s ease;
     @include tablet() {
       @include desktop-section-header-font();
     }
     &:hover {
-      text-decoration: underline;
+      text-decoration-color: $p-color-bf-black;
+      transition: text-decoration-color 1s ease;
     }
   }
 

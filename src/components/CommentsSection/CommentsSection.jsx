@@ -21,6 +21,8 @@ function commentsSection({ selectedVideo }) {
         return `${yearsRounded} year ago`;
       }
       return `${yearsRounded} years ago`;
+    } else if (months === 12) {
+      return `1 year ago`;
     } else if (months > 1) {
       return `${months} months ago`;
     } else if (months === 1) {

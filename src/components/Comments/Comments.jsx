@@ -2,13 +2,29 @@ import "./Comments.scss";
 import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/icons/add_comment.svg";
 import CommentsSection from "../CommentsSection/CommentsSection.jsx";
+import React, { useState } from "react";
 
-function Comments( {selectedVideo}) {
+function Comments({ selectedVideo }) {
+  const [currentComment, setCurrentComment] = useState("");
+
+  const handleSubmit = (event) => {
+    if (event.target.comment.value === "") {
+      alert("Please fill out comment field");
+    } else {
+      setCurrentComment(event.target.comment.value);
+      console.log(currentComment);
+    }
+    event.preventDefault();
+    event.target.reset();
+  };
+
   return (
     <>
       <section className="comments">
         <div className="comments__number-of-comments">
-          <p className="comments__number-of-comments-text">{selectedVideo.comments.length} Comments</p>
+          <p className="comments__number-of-comments-text">
+            {selectedVideo.comments.length} Comments
+          </p>
         </div>
         <div className="comments__section">
           <div className="comments__user-avatar">
@@ -16,7 +32,7 @@ function Comments( {selectedVideo}) {
               <img className="comments__user-avatar--img" src={profileImage} />
             </div>
           </div>
-          <form className="comments__form">
+          <form className="comments__form" onSubmit={handleSubmit}>
             <div className="comments__input-wrapper">
               <label className="comments__form-title" name="comment">
                 JOIN THE CONVERSATION
@@ -37,7 +53,7 @@ function Comments( {selectedVideo}) {
           </form>
         </div>
       </section>
-      <CommentsSection selectedVideo={selectedVideo}/>
+      <CommentsSection selectedVideo={selectedVideo} />
     </>
   );
 }

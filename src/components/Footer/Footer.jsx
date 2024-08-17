@@ -12,11 +12,7 @@ function VideoList({ filteredVideoList, setSelectedVideo }) {
           <h2 className="video-list__title">NEXT VIDEOS</h2>
           <ul className="video-list__container">
             {filteredVideoList.map((video) => (
-              <li
-                className="video-list__item"
-                key={video.id}
-                // onClick={() => handleVideoClick(video)}
-              >
+              <li className="video-list__item" key={video.id}>
                 <div
                   className="video-list__thumbnail-container"
                   onClick={() => handleVideoClick(video)}

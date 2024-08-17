@@ -91,6 +91,7 @@
   &__form-button {
     padding-top: 0.66rem;
     padding-bottom: 0.66rem;
+    transition: .3s ease;
     @include button();
     @include tablet() {
       @include desktop-label-button-font();
