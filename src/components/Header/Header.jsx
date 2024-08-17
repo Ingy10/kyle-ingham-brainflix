@@ -10,8 +10,7 @@ function Header({ selectedVideo }) {
           <div className="header__video-wrapper">
             <video
               className="header__video-player"
-              src={selectedVideo.video + "?api_key=kyle"}
-              type="video/mp4"
+              src={selectedVideo.video + "?api_key=kyle" + Math.random()}
               poster={selectedVideo.image}
               controls
             ></video>
