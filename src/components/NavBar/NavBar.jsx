@@ -3,8 +3,26 @@ import logo from "../../assets/logo/BrainFlix-logo.svg";
 import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import magnifyIcon from "../../assets/icons/search.svg";
 import download from "../../assets/icons/upload.svg";
+import { useState, useEffect } from "react";
 
 function NavBar() {
+  // Allows user to submit a search term and have the searchTerm state update
+  const [searchTerm, setSearchTerm] = useState("");
+  const pressEnter = async (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      setSearchTerm(event.target.value);
+      event.target.value = "";
+    }
+  };
+
+  // When someone submits a search, the search term will be logged to the console if it is not an empty string and only after setSearchTerm has run.
+  useEffect(() => {
+    if (searchTerm !== "") {
+      console.log(searchTerm);
+    }
+  }, [searchTerm]);
+
   return (
     <section className="nav">
       <div className="nav__logo-container">
@@ -17,7 +35,11 @@ function NavBar() {
       <div className="nav__content-container">
         <div className="nav__content-sub-container1">
           <div className="nav__input-wrapper">
-            <input className="nav__input-search" placeholder="Search"></input>
+            <input
+              className="nav__input-search"
+              placeholder="Search"
+              onKeyDown={pressEnter}
+            ></input>
             <img className="nav__input-search--icon" src={magnifyIcon} />
           </div>
           <div className="nav__avatar-container--mobile">

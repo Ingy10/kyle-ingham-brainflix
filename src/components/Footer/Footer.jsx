@@ -1,6 +1,7 @@
 import "./Footer.scss";
 
 function VideoList({ filteredVideoList, setSelectedVideo }) {
+  // when video is clicked from video list setSelectedVideo will set selectedVideo variable to the video that was clicked
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
   };

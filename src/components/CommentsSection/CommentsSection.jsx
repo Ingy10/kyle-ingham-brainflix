@@ -1,8 +1,10 @@
 import "./CommentsSection.scss";
 
 function commentsSection({ selectedVideo }) {
+  // sets comments to the selected video comment list
   const comments = selectedVideo.comments;
 
+  // defines time in simple text describing how long since comment was made.
   const formatDate = (time) => {
     const commentTime = new Date(time);
     const currentTime = new Date();

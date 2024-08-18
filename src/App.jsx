@@ -6,8 +6,10 @@ import VideoData from "./data/video-details.json";
 import Footer from "../src/components/Footer/Footer";
 
 function App() {
+  // sets first video in list to be selected video
   const [selectedVideo, setSelectedVideo] = useState(VideoData[0]);
 
+  // creates a list of videos that does not include the selected video
   const filteredVideoList = VideoData.filter(
     (video) => video !== selectedVideo
   );
