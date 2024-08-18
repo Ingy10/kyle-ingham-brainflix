@@ -2,7 +2,7 @@ import "./Comments.scss";
 import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/icons/add_comment.svg";
 import CommentsSection from "../CommentsSection/CommentsSection.jsx";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Comments({ selectedVideo }) {
   const [currentComment, setCurrentComment] = useState("");
@@ -13,11 +13,15 @@ function Comments({ selectedVideo }) {
       alert("Please fill out comment field");
     } else {
       setCurrentComment(event.target.comment.value);
-      console.log(currentComment);
     }
     event.preventDefault();
     event.target.reset();
   };
+
+  // This is used to ensure setCurrentComment can run before the currentComment is logged to the console. It is activated when currentComment is changed.
+  useEffect(() => {
+    console.log("comment: " + currentComment);
+  }, [currentComment]);
 
   return (
     <>

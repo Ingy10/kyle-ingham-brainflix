@@ -19,7 +19,7 @@ function NavBar() {
   // When someone submits a search, the search term will be logged to the console if it is not an empty string and only after setSearchTerm has run.
   useEffect(() => {
     if (searchTerm !== "") {
-      console.log(searchTerm);
+      console.log("Search Term: " + searchTerm);
     }
   }, [searchTerm]);
 
