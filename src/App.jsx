@@ -1,5 +1,6 @@
 import "./App.scss";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../src/components/Header/Header";
 import Main from "../src/components/Main/Main";
 import VideoData from "./data/video-details.json";
@@ -15,16 +16,18 @@ function App() {
   );
 
   return (
-    <section className="page">
-      <Header selectedVideo={selectedVideo} />
-      <div className="page__section-desktop-flex">
-        <Main selectedVideo={selectedVideo} />
-        <Footer
-          filteredVideoList={filteredVideoList}
-          setSelectedVideo={setSelectedVideo}
-        />
-      </div>
-    </section>
+    <BrowserRouter>
+      <section className="page">
+        <Header selectedVideo={selectedVideo} />
+        <div className="page__section-desktop-flex">
+          <Main selectedVideo={selectedVideo} />
+          <Footer
+            filteredVideoList={filteredVideoList}
+            setSelectedVideo={setSelectedVideo}
+          />
+        </div>
+      </section>
+    </BrowserRouter>
   );
 }
 
