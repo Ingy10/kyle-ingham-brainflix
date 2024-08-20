@@ -26,7 +26,6 @@
 
   &__content {
     flex-grow: 1;
-    padding-left: $full-unit;
     padding-top: $full-unit;
     @include desktop() {
       padding-right: 5%;

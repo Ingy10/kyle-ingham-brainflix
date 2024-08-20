@@ -1,33 +1,36 @@
 import "./App.scss";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "../src/components/Header/Header";
-import Main from "../src/components/Main/Main";
+// import Header from "../src/components/Header/Header";
+// import Main from "../src/components/Main/Main";
 import VideoData from "./data/video-details.json";
-import Footer from "../src/components/Footer/Footer";
+// import Footer from "../src/components/Footer/Footer";
+import HomePage from "./pages/HomePage/HomePage";
+import VideoDetailsPage from "./pages/VideoDetailsPage/VideoDetailsPage";
+import VideoUploadPage from "./pages/VideoUploadPage/VideoUploadPage";
 
 function App() {
-  // sets first video in list to be selected video
-  const [selectedVideo, setSelectedVideo] = useState(VideoData[0]);
+  // // sets first video in list to be selected video
+  // const [selectedVideo, setSelectedVideo] = useState(VideoData[0]);
 
-  // creates a list of videos that does not include the selected video
-  const filteredVideoList = VideoData.filter(
-    (video) => video !== selectedVideo
-  );
+  // // creates a list of videos that does not include the selected video
+  // const filteredVideoList = VideoData.filter(
+  //   (video) => video !== selectedVideo
+  // );
 
   return (
-    <BrowserRouter>
-      <section className="page">
-        <Header selectedVideo={selectedVideo} />
-        <div className="page__section-desktop-flex">
-          <Main selectedVideo={selectedVideo} />
-          <Footer
-            filteredVideoList={filteredVideoList}
-            setSelectedVideo={setSelectedVideo}
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="VideoDetailsPage/:videoId"
+            element={<VideoDetailsPage />}
           />
-        </div>
-      </section>
-    </BrowserRouter>
+          <Route path="VideoUploadPage" element={<VideoUploadPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

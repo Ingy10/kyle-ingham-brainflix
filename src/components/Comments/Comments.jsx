@@ -20,7 +20,7 @@ function Comments({ selectedVideo }) {
 
   // This is used to ensure setCurrentComment can run before the currentComment is logged to the console. It is activated when currentComment is changed.
   useEffect(() => {
-    console.log("comment: " + currentComment);
+    if (currentComment !== "") console.log("comment: " + currentComment);
   }, [currentComment]);
 
   return (

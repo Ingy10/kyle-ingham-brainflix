@@ -1,10 +1,14 @@
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 
-function VideoList({ filteredVideoList, setSelectedVideo }) {
+function VideoList({ filteredVideoList }) {
   // when video is clicked from video list setSelectedVideo will set selectedVideo variable to the video that was clicked
-  const handleVideoClick = (video) => {
-    setSelectedVideo(video);
-  };
+  // const handleVideoClick = (video) => {
+  //   setSelectedVideo(video);
+  // };
+
+  // const { id } = useParams(video);
+  // const clickedVideo = video.find((video) => video.id === id);
 
   return (
     <>
@@ -14,23 +18,25 @@ function VideoList({ filteredVideoList, setSelectedVideo }) {
           <ul className="video-list__container">
             {filteredVideoList.map((video) => (
               <li className="video-list__item" key={video.id}>
-                <div
+                <Link
                   className="video-list__thumbnail-container"
-                  onClick={() => handleVideoClick(video)}
+                  // onClick={() => handleVideoClick(video)}
+                  to={`/VideoDetailsPage/${video.id}`}
                 >
                   <img
                     className="video-list__thumbnail-image"
                     src={video.image}
                     alt={video.title}
                   />
-                </div>
+                </Link>
                 <div className="video-list__content-container">
-                  <p
+                  <Link
                     className="video-list__video-title"
-                    onClick={() => handleVideoClick(video)}
+                    // onClick={() => handleVideoClick(video)}
+                    to={`./VideoDetailsPage/${video.id}`}
                   >
                     {video.title}
-                  </p>
+                  </Link>
                   <p className="video-list__video-author">{video.channel}</p>
                 </div>
               </li>

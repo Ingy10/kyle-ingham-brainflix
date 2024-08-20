@@ -4,6 +4,7 @@ import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import magnifyIcon from "../../assets/icons/search.svg";
 import download from "../../assets/icons/upload.svg";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   // Allows user to submit a search term and have the searchTerm state update
@@ -25,13 +26,15 @@ function NavBar() {
 
   return (
     <section className="nav">
-      <div className="nav__logo-container">
-        <img
-          src={logo}
-          className="nav__logo-image logo-image"
-          alt="BrainFlix Logo"
-        />
-      </div>
+      <Link to={"/"}>
+        <div className="nav__logo-container">
+          <img
+            src={logo}
+            className="nav__logo-image logo-image"
+            alt="BrainFlix Logo"
+          />
+        </div>
+      </Link>
       <div className="nav__content-container">
         <div className="nav__content-sub-container1">
           <div className="nav__input-wrapper">
@@ -47,9 +50,9 @@ function NavBar() {
           </div>
         </div>
         <div className="nav__CTA-button-wrapper">
-          <a className="nav__CTA-button-upload" href="#">
+          <Link className="nav__CTA-button-upload" to="/VideoUploadPage">
             UPLOAD
-          </a>
+          </Link>
           <img className="nav__CTA-button-upload--icon" src={download} />
         </div>
         <div className="nav__avatar-container--desktop">
