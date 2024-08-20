@@ -1,0 +1,75 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.upload-video {
+  width: 100%;
+  border-top: 2px solid $s-color-mercury;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: $full-unit;
+  &__content {
+    width: 90%;
+  }
+  &__title {
+    @include mobile-header-font();
+  }
+  &__thumbnail-label {
+    color: $p-color-silver;
+    @include mobile-subheader-font();
+  }
+  &__thumbnail-img {
+    width: 100%;
+    padding-top: 0.2rem;
+  }
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__input-title,
+  &__input-description {
+    padding: $half-unit;
+    margin-top: 0.2rem;
+    background-color: $s-color-alabaster;
+    border: 1px solid $p-color-silver;
+    border-radius: 4px;
+    outline: none;
+    &--label {
+      color: $p-color-silver;
+      @include mobile-subheader-font();
+      padding-top: $full-unit;
+    }
+    &::placeholder {
+      color: $p-color-bf-black;
+    }
+    &:focus {
+      border: 1px solid $p-color-bf-blue;
+    }
+  }
+  &__input-description {
+    min-height: 4rem;
+  }
+  &__button-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: $full-plus-half-unit;
+    margin-bottom: $full-unit;
+  }
+  &__button-submit-container {
+    position: relative;
+    margin-bottom: $full-unit;
+  }
+  &__button-submit,
+  &__button-cancel {
+    padding: $half-unit;
+    @include button();
+  }
+  &__button-cancel {
+    background-color: $p-color-white;
+    color: $p-color-bf-blue;
+    &:hover {
+      background-color: $s-color-alabaster;
+      color: $s-color-bf-d-blue;
+    }
+  }
+}
