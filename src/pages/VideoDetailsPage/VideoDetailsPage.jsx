@@ -27,7 +27,7 @@ function VideoDetailsPage() {
         <Main selectedVideo={selectedVideo} />
         <Footer
           filteredVideoList={filteredVideoList}
-          //   setSelectedVideo={setSelectedVideo}
+          setSelectedVideo={setSelectedVideo}
         />
       </div>
     </section>
