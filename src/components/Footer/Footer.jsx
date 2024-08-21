@@ -2,14 +2,6 @@ import "./Footer.scss";
 import { Link } from "react-router-dom";
 
 function VideoList({ filteredVideoList }) {
-  // when video is clicked from video list setSelectedVideo will set selectedVideo variable to the video that was clicked
-  // const handleVideoClick = (video) => {
-  //   setSelectedVideo(video);
-  // };
-
-  // const { id } = useParams(video);
-  // const clickedVideo = video.find((video) => video.id === id);
-
   return (
     <>
       <footer className="video-list">
@@ -20,8 +12,7 @@ function VideoList({ filteredVideoList }) {
               <li className="video-list__item" key={video.id}>
                 <Link
                   className="video-list__thumbnail-container"
-                  // onClick={() => handleVideoClick(video)}
-                  to={`/VideoDetailsPage/${video.id}`}
+                  to={`/videos/${video.id}`}
                 >
                   <img
                     className="video-list__thumbnail-image"
@@ -32,8 +23,7 @@ function VideoList({ filteredVideoList }) {
                 <div className="video-list__content-container">
                   <Link
                     className="video-list__video-title"
-                    // onClick={() => handleVideoClick(video)}
-                    to={`./VideoDetailsPage/${video.id}`}
+                    to={`/videos/${video.id}`}
                   >
                     {video.title}
                   </Link>

@@ -1,6 +1,5 @@
 import "./HomePage.scss";
 import { useState, useEffect } from "react";
-// import VideoData from "../../data/video-details.json";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import Footer from "../../components/Footer/Footer";
@@ -21,7 +20,6 @@ function HomePage() {
       const videoList = await axios.get(`${BASE_URL}videos/${API_KEY}`);
       setDefaultVideoId(videoList.data[0].id);
       setVideoListArray(videoList.data);
-      // console.log(defaultVideoId);
     } catch (error) {
       console.error(error);
     }
@@ -30,11 +28,9 @@ function HomePage() {
   // function to get the default video to be loaded on the homepage
   const fetchVideos = async () => {
     try {
-      // console.log(defaultVideoId);
       const videoList = await axios.get(
         `${BASE_URL}videos/${defaultVideoId}${API_KEY}`
       );
-      // console.log(videoList.data);
       setSelectedVideo(videoList.data);
     } catch (error) {
       console.error(error);
