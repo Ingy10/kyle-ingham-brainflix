@@ -6,11 +6,13 @@ import React, { useState, useEffect } from "react";
 
 function Comments({ selectedVideo }) {
   const [currentComment, setCurrentComment] = useState("");
+  const [invalidComment, setInvalidComment] = useState("");
 
   // allows user to submit a comment only if form is filled out and have comment logged to the console. If input field is not filled out, they will get an alert. Form will be reset with each submit.
   const handleSubmit = (event) => {
     if (event.target.comment.value === "") {
       alert("Please fill out comment field");
+      setInvalidComment("comments__form-input--invalid");
     } else {
       setCurrentComment(event.target.comment.value);
     }
@@ -22,6 +24,13 @@ function Comments({ selectedVideo }) {
   useEffect(() => {
     if (currentComment !== "") console.log("comment: " + currentComment);
   }, [currentComment]);
+
+  // after an invalid submission the red border is removed once they start typing in input field
+  const inputChange = (event) => {
+    if (event.target.value) {
+      setInvalidComment("");
+    }
+  };
 
   return (
     <>
@@ -43,10 +52,11 @@ function Comments({ selectedVideo }) {
                 JOIN THE CONVERSATION
               </label>
               <textarea
-                className="comments__form-input"
+                className={`comments__form-input ${invalidComment}`}
                 id="comment"
                 rows="1"
                 placeholder="Add a new comment"
+                onChange={inputChange}
               ></textarea>
             </div>
             <div className="comments__button-wrapper">

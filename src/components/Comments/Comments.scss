@@ -74,11 +74,21 @@
     border: 1px solid $p-color-silver;
     border-radius: 4px;
     min-height: 5rem;
+    outline: none;
     @include tablet() {
       min-height: 0;
     }
     &::placeholder {
       color: $p-color-bf-black;
+    }
+    &:focus {
+      border: 2px solid $p-color-bf-blue;
+    }
+    &--invalid {
+      border: 1px solid #d22d2d;
+      &:focus {
+        border: 1px solid #d22d2d;
+      }
     }
   }
   &__button-wrapper {
@@ -91,7 +101,7 @@
   &__form-button {
     padding-top: 0.66rem;
     padding-bottom: 0.66rem;
-    transition: .3s ease;
+    transition: 0.3s ease;
     @include button();
     @include tablet() {
       @include desktop-label-button-font();

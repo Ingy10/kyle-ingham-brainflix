@@ -46,8 +46,20 @@
       border: 1px solid $p-color-bf-blue;
     }
   }
+  &__input-title--invalid {
+    border: 1px solid #d22d2d;
+    &:focus {
+      border: 1px solid #d22d2d;
+    }
+  }
   &__input-description {
     min-height: 4rem;
+    &--invalid {
+      border: 1px solid #d22d2d;
+      &:focus {
+        border: 1px solid #d22d2d;
+      }
+    }
   }
   &__button-container {
     display: flex;

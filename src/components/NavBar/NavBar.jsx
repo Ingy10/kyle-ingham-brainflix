@@ -9,13 +9,28 @@ import { Link } from "react-router-dom";
 function NavBar() {
   // Allows user to submit a search term and have the searchTerm state update
   const [searchTerm, setSearchTerm] = useState("");
-  const pressEnter = async (event) => {
-    if (event.key === "Enter") {
+  const [errorState, setErrorState] = useState("");
+  const pressEnter = (event) => {
+    if (event.key === "Enter" && event.target.value) {
       event.preventDefault();
       setSearchTerm(event.target.value);
       event.target.value = "";
+      setErrorState("");
+    } else if (event.key === "Enter" && !event.target.value) {
+      setErrorState("nav__input-search--invalid");
     }
   };
+
+  // removes invalid state as soon as user starts typing
+  const inputChange = (event) => {
+    if (event.target.value) {
+      setErrorState("");
+    }
+  };
+
+  useEffect(() => {
+    console.log(errorState);
+  }, [errorState]);
 
   // When someone submits a search, the search term will be logged to the console if it is not an empty string and only after setSearchTerm has run.
   useEffect(() => {
@@ -39,9 +54,10 @@ function NavBar() {
         <div className="nav__content-sub-container1">
           <div className="nav__input-wrapper">
             <input
-              className="nav__input-search"
+              className={`nav__input-search ${errorState}`}
               placeholder="Search"
               onKeyDown={pressEnter}
+              onChange={inputChange}
             ></input>
             <img className="nav__input-search--icon" src={magnifyIcon} />
           </div>
