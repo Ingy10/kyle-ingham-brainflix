@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include desktop() {
+    @include desktop {
       flex-direction: row;
       align-items: flex-start;
       width: 80%;

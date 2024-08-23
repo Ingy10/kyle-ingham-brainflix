@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 2px solid $s-color-mercury;
-    @include desktop() {
+    @include desktop {
       &:last-of-type {
         border-bottom: none;
       }
@@ -21,13 +21,13 @@
     padding-right: $full-unit;
   }
   &__avatar-container {
-    @include avatarContainer();
+    @include avatarContainer;
   }
 
   &__content {
     flex-grow: 1;
     padding-top: $full-unit;
-    @include desktop() {
+    @include desktop {
       padding-right: 5%;
     }
   }
@@ -35,32 +35,32 @@
   &__header {
     display: flex;
     justify-content: space-between;
-    @include mobile-subheader-font();
+    @include mobile-subheader-font;
   }
 
   &__name {
     margin: 0;
     padding-bottom: 0.25rem;
-    @include tablet() {
-      @include desktop-section-header-font();
+    @include tablet {
+      @include desktop-section-header-font;
     }
   }
 
   &__date {
     color: $p-color-silver;
     margin: 0;
-    @include tablet() {
-      @include desktop-section-header-font();
+    @include tablet {
+      @include desktop-section-header-font;
     }
   }
 
   &__text {
-    @include mobile-body-font();
+    @include mobile-body-font;
     color: $s-color-bf-d-black;
     margin: 0;
     padding-bottom: $full-unit;
-    @include tablet() {
-      @include desktop-body-font();
+    @include tablet {
+      @include desktop-body-font;
     }
   }
 }

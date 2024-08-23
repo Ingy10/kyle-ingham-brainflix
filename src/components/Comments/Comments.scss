@@ -6,11 +6,11 @@
   &__number-of-comments-text {
     padding-top: $half-unit;
     padding-bottom: $half-unit;
-    @include mobile-subheader-font();
-    @include tablet() {
+    @include mobile-subheader-font;
+    @include tablet {
       @include desktop-section-header-font();
     }
-    @include desktop() {
+    @include desktop {
       padding-bottom: 0;
     }
   }
@@ -20,11 +20,11 @@
     width: 100%;
     padding-bottom: $full-unit;
     border-bottom: 2px solid $s-color-mercury;
-    @include tablet() {
+    @include tablet {
       padding-bottom: $full-plus-half-unit;
       padding-top: $half-unit;
     }
-    @include desktop() {
+    @include desktop {
       box-sizing: border-box;
       padding-right: 5%;
     }
@@ -34,17 +34,17 @@
     display: flex;
     padding-right: $full-unit;
     &--container {
-      @include avatarContainer();
+      @include avatarContainer;
     }
     &--img {
-      @include avatarImage();
+      @include avatarImage;
     }
   }
   &__form {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    @include tablet() {
+    @include tablet {
       flex-direction: row;
       align-items: flex-end;
       justify-content: space-between;
@@ -55,17 +55,17 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    @include tablet() {
+    @include tablet {
       flex-grow: 1;
       padding-right: $full-plus-half-unit;
     }
   }
   &__form-title {
-    @include mobile-subheader-font();
+    @include mobile-subheader-font;
     color: $p-color-silver;
     padding-bottom: 0.25rem;
-    @include tablet() {
-      @include desktop-section-header-font();
+    @include tablet {
+      @include desktop-section-header-font;
     }
   }
   &__form-input {
@@ -75,7 +75,7 @@
     border-radius: 4px;
     min-height: 5rem;
     outline: none;
-    @include tablet() {
+    @include tablet {
       min-height: 0;
     }
     &::placeholder {
@@ -94,7 +94,7 @@
   &__button-wrapper {
     position: relative;
     margin-top: $full-unit;
-    @include tablet() {
+    @include tablet {
       width: 25%;
     }
   }
@@ -102,9 +102,9 @@
     padding-top: 0.66rem;
     padding-bottom: 0.66rem;
     transition: 0.3s ease;
-    @include button();
-    @include tablet() {
-      @include desktop-label-button-font();
+    @include button;
+    @include tablet {
+      @include desktop-label-button-font;
     }
     &--icon {
       width: 1.2rem;

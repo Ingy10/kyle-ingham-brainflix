@@ -83,7 +83,7 @@
   }
 }
 
-@mixin button() {
+@mixin button {
   display: flex;
   justify-content: center;
   border-radius: 4px;
@@ -106,7 +106,7 @@
   }
 }
 
-@mixin avatarContainer() {
+@mixin avatarContainer {
   position: relative;
   overflow: hidden;
   height: 2.5rem;
@@ -115,7 +115,7 @@
   border-radius: 50%;
 }
 
-@mixin avatarImage() {
+@mixin avatarImage {
   position: absolute;
   width: auto;
   height: 100%;

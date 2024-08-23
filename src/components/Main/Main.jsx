@@ -13,13 +13,13 @@ function Main({ selectedVideo }) {
           <h1 className="main__title">{selectedVideo.title}</h1>
         </section>
         <section className="main__video-data">
-          <div className="main__video-container--1">
+          <div className="main__video-container-1">
             <div className="main__video-data--1">{selectedVideo.channel}</div>
             <div className="main__video-data--2">
               {date.toLocaleDateString()}
             </div>
           </div>
-          <div className="main__video-container--2">
+          <div className="main__video-container-2">
             <div className="main__video-data--3">
               <img className="main__video-data--view-icon" src={viewIcon} />
               <p className="main__video-data--view-text">
