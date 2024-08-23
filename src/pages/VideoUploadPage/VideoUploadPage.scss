@@ -8,23 +8,70 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: $full-unit;
+  @include tablet {
+    padding-bottom: 0;
+  }
   &__content {
     width: 90%;
+    @include desktop {
+      width: 100%;
+      padding-right: 8%;
+      padding-left: 8%;
+      box-sizing: border-box;
+    }
   }
   &__title {
-    @include mobile-header-font();
+    @include mobile-header-font;
+    @include tablet {
+      border-bottom: 2px solid $s-color-mercury;
+      padding-bottom: $full-plus-half-unit;
+      @include desktop-header-font;
+    }
+  }
+  &__form-section {
+    @include desktop {
+      display: flex;
+      position: relative;
+      padding-bottom: $double-unit;
+      border-bottom: 2px solid $s-color-mercury;
+    }
+  }
+  &__thumbnail-container {
+    @include desktop {
+      max-width: 20rem;
+    }
   }
   &__thumbnail-label {
     color: $p-color-silver;
-    @include mobile-subheader-font();
+    @include mobile-subheader-font;
+    @include tablet {
+      @include desktop-section-header-font;
+    }
+  }
+  &__image-container {
+    border-radius: 4px;
+    margin-top: 0.2rem;
+    background-color: $s-color-mercury;
+    display: flex;
+    @include tablet {
+      width: 50%;
+    }
+    @include desktop {
+      width: 100%;
+    }
   }
   &__thumbnail-img {
     width: 100%;
-    padding-top: 0.2rem;
+    object-fit: cover;
   }
   &__input-container {
     display: flex;
     flex-direction: column;
+    @include desktop {
+      flex-grow: 1;
+      width: 100%;
+      padding-left: $full-plus-half-unit;
+    }
   }
   &__input-title,
   &__input-description {
@@ -34,16 +81,32 @@
     border: 1px solid $p-color-silver;
     border-radius: 4px;
     outline: none;
+    @include tablet {
+      padding: 0.75rem;
+    }
     &--label {
       color: $p-color-silver;
-      @include mobile-subheader-font();
+      @include mobile-subheader-font;
       padding-top: $full-unit;
+      @include tablet {
+        @include desktop-section-header-font;
+      }
+      @include desktop {
+        padding-top: 0;
+      }
     }
     &::placeholder {
       color: $p-color-bf-black;
     }
     &:focus {
       border: 1px solid $p-color-bf-blue;
+    }
+  }
+  &__input-description {
+    &--label {
+      @include desktop {
+        padding-top: $full-unit;
+      }
     }
   }
   &__input-title--invalid {
@@ -61,24 +124,59 @@
       }
     }
   }
+  &__button-section {
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
   &__button-container {
     display: flex;
     flex-direction: column;
     padding-top: $full-plus-half-unit;
     margin-bottom: $full-unit;
+    @include tablet {
+      width: 50%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+    @include desktop {
+      width: 30%;
+    }
   }
   &__button-submit-container {
     position: relative;
     margin-bottom: $full-unit;
+    @include tablet {
+      width: 47%;
+    }
   }
   &__button-submit,
   &__button-cancel {
     padding: $half-unit;
-    @include button();
+    @include button;
+    @include tablet {
+      @include desktop-label-button-font;
+    }
+  }
+  &__button-submit {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    @include tablet {
+      width: 100%;
+    }
   }
   &__button-cancel {
     background-color: $p-color-white;
     color: $p-color-bf-blue;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    max-height: 2.75rem;
+    @include tablet {
+      width: 47%;
+      align-items: center;
+    }
     &:hover {
       background-color: $s-color-alabaster;
       color: $s-color-bf-d-blue;
