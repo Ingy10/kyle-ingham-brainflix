@@ -5,12 +5,19 @@ import CommentsSection from "../CommentsSection/CommentsSection.jsx";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
+function Comments({
+  selectedVideo,
+  BASE_URL,
+  API_KEY,
+  videoId,
+  defaultVideoId,
+}) {
   const [currentComment, setCurrentComment] = useState("");
   const [invalidComment, setInvalidComment] = useState("");
   const [updatedComments, setUpdatedComments] = useState(
     selectedVideo.comments
   );
+  const [totalComments, setTotalComments] = useState("");
 
   // ensures comment list is reset to current video when video changes
   useEffect(() => {
@@ -29,10 +36,9 @@ function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
     event.target.reset();
   };
 
-  // This is used to ensure setCurrentComment can run before the currentComment is logged to the console. It is activated when currentComment is changed.
+  // This is used to ensure setCurrentComment can run before the currentComment is posted. It is activated when currentComment is changed.
   useEffect(() => {
     if (currentComment !== "") {
-      console.log("comment: " + currentComment);
       postComment("Joey Mendez", currentComment);
     }
   }, [currentComment]);
@@ -46,27 +52,53 @@ function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
 
   // posts new comment to selected video comment list api
   const postComment = async (newName, newComment) => {
+    let newId = videoId;
+    if (!newId) {
+      newId = defaultVideoId;
+    }
     try {
       const comment = await axios.post(
-        `${BASE_URL}videos/${videoId}/comments${API_KEY}`,
+        `${BASE_URL}videos/${newId}/comments${API_KEY}`,
         {
           name: newName,
           comment: newComment,
         }
       );
       const newCommentList = [comment.data, ...updatedComments];
+      selectedVideo.comments = newCommentList;
       setUpdatedComments(newCommentList);
     } catch (error) {
       console.error(error);
     }
   };
 
+  // Updates comment counter dynamically when new comment is added
+  useEffect(() => {
+    setTotalComments(updatedComments.length);
+  }, [updatedComments]);
+
+  // deletes selected comment and updates comment list by "sending a new request for the Main Video data" as per diving deeper requirements
+  async function deleteComment(id) {
+    try {
+      const delComment = await axios.delete(
+        `${BASE_URL}videos/${selectedVideo.id}/comments/${id}${API_KEY}`
+      );
+      const newComments = await axios.get(
+        `${BASE_URL}videos/${selectedVideo.id}${API_KEY}`
+      );
+      setUpdatedComments(newComments.data.comments);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <section className="comments">
         <div className="comments__number-of-comments">
           <p className="comments__number-of-comments-text">
-            {selectedVideo.comments.length} Comments
+            {!totalComments ? selectedVideo.comments.length : totalComments}{" "}
+            Comments
           </p>
         </div>
         <div className="comments__section">
@@ -101,6 +133,7 @@ function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
         selectedVideo={selectedVideo}
         updatedComments={updatedComments}
         videoId={videoId}
+        deleteComment={deleteComment}
       />
     </>
   );

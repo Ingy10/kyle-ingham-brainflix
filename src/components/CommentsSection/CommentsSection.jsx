@@ -1,12 +1,13 @@
 import "./CommentsSection.scss";
 import { useState, useEffect } from "react";
+import likeIcon from "../../assets/icons/likes.svg";
 
-function commentsSection({ selectedVideo, updatedComments }) {
+function commentsSection({ selectedVideo, updatedComments, deleteComment }) {
   const [comments, setComments] = useState([]);
 
   // sets comments to the selected video comment list and sorts so most recent comment is displayed first
   useEffect(() => {
-    console.log(updatedComments);
+    console.log(updatedComments); // ***Delete this beofre submission
     setComments(updatedComments.sort((a, b) => b.timestamp - a.timestamp));
   }, [updatedComments]);
 
@@ -79,6 +80,23 @@ function commentsSection({ selectedVideo, updatedComments }) {
                   </p>
                 </div>
                 <p className="comments-section__text">{comment.comment}</p>
+                <div className="comments-section__footer">
+                  <span className="comments-section__likes-container">
+                    <img
+                      className="comments-section__likes-icon"
+                      src={likeIcon}
+                    />
+                    <p className="comments-section__likes-counter">
+                      {comment.likes}
+                    </p>
+                  </span>
+                  <p
+                    className="comments-section__delete"
+                    onClick={() => deleteComment(comment.id)}
+                  >
+                    DELETE
+                  </p>
+                </div>
               </div>
             </div>
           ))}

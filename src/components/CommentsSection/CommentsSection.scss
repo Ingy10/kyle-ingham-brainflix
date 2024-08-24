@@ -58,9 +58,25 @@
     @include mobile-body-font;
     color: $s-color-bf-d-black;
     margin: 0;
-    padding-bottom: $full-unit;
     @include tablet {
       @include desktop-body-font;
     }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    color: $p-color-silver;
+    @include mobile-section-header-font;
+  }
+  &__likes-container {
+    display: flex;
+    @include mobile-body-font;
+    cursor: pointer;
+  }
+  &__likes-icon {
+    padding-right: 0.25rem;
+  }
+  &__delete {
+    cursor: pointer;
   }
 }

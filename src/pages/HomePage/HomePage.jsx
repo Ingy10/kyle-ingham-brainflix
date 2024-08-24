@@ -66,7 +66,12 @@ function HomePage() {
       <section className="page">
         <Header selectedVideo={selectedVideo} />
         <div className="page__section-desktop-flex">
-          <Main selectedVideo={selectedVideo} />
+          <Main
+            selectedVideo={selectedVideo}
+            defaultVideoId={defaultVideoId}
+            BASE_URL={BASE_URL}
+            API_KEY={API_KEY}
+          />
           <Footer
             filteredVideoList={filteredVideoList}
             setSelectedVideo={setSelectedVideo}
