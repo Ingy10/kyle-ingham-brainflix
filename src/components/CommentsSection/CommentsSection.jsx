@@ -8,7 +8,14 @@ function commentsSection({ selectedVideo, updatedComments }) {
   useEffect(() => {
     console.log(updatedComments);
     setComments(updatedComments.sort((a, b) => b.timestamp - a.timestamp));
-  }, [updatedComments, selectedVideo]);
+  }, [updatedComments]);
+
+  // displays correct comment list when new video is clicked
+  useEffect(() => {
+    setComments(
+      selectedVideo.comments.sort((a, b) => b.timestamp - a.timestamp)
+    );
+  }, [selectedVideo]);
 
   // defines time in simple text describing how long since comment was made.
   const formatDate = (time) => {

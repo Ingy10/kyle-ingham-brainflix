@@ -12,6 +12,11 @@ function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
     selectedVideo.comments
   );
 
+  // ensures comment list is reset to current video when video changes
+  useEffect(() => {
+    setUpdatedComments(selectedVideo.comments);
+  }, [selectedVideo]);
+
   // allows user to submit a comment only if form is filled out and have comment logged to the console. If input field is not filled out, they will get an alert. Form will be reset with each submit.
   const handleSubmit = (event) => {
     if (event.target.comment.value === "") {
@@ -95,6 +100,7 @@ function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
       <CommentsSection
         selectedVideo={selectedVideo}
         updatedComments={updatedComments}
+        videoId={videoId}
       />
     </>
   );
