@@ -3,10 +3,14 @@ import profileImage from "../../assets/images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/icons/add_comment.svg";
 import CommentsSection from "../CommentsSection/CommentsSection.jsx";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function Comments({ selectedVideo }) {
+function Comments({ selectedVideo, BASE_URL, API_KEY, videoId }) {
   const [currentComment, setCurrentComment] = useState("");
   const [invalidComment, setInvalidComment] = useState("");
+  const [updatedComments, setUpdatedComments] = useState(
+    selectedVideo.comments
+  );
 
   // allows user to submit a comment only if form is filled out and have comment logged to the console. If input field is not filled out, they will get an alert. Form will be reset with each submit.
   const handleSubmit = (event) => {
@@ -22,13 +26,33 @@ function Comments({ selectedVideo }) {
 
   // This is used to ensure setCurrentComment can run before the currentComment is logged to the console. It is activated when currentComment is changed.
   useEffect(() => {
-    if (currentComment !== "") console.log("comment: " + currentComment);
+    if (currentComment !== "") {
+      console.log("comment: " + currentComment);
+      postComment("Joey Mendez", currentComment);
+    }
   }, [currentComment]);
 
   // after an invalid submission the red border is removed once they start typing in input field
   const inputChange = (event) => {
     if (event.target.value) {
       setInvalidComment("");
+    }
+  };
+
+  // posts new comment to selected video comment list api
+  const postComment = async (newName, newComment) => {
+    try {
+      const comment = await axios.post(
+        `${BASE_URL}videos/${videoId}/comments${API_KEY}`,
+        {
+          name: newName,
+          comment: newComment,
+        }
+      );
+      const newCommentList = [comment.data, ...updatedComments];
+      setUpdatedComments(newCommentList);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -68,7 +92,10 @@ function Comments({ selectedVideo }) {
           </form>
         </div>
       </section>
-      <CommentsSection selectedVideo={selectedVideo} />
+      <CommentsSection
+        selectedVideo={selectedVideo}
+        updatedComments={updatedComments}
+      />
     </>
   );
 }

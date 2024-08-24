@@ -1,8 +1,14 @@
 import "./CommentsSection.scss";
+import { useState, useEffect } from "react";
 
-function commentsSection({ selectedVideo }) {
-  // sets comments to the selected video comment list
-  const comments = selectedVideo.comments;
+function commentsSection({ selectedVideo, updatedComments }) {
+  const [comments, setComments] = useState([]);
+
+  // sets comments to the selected video comment list and sorts so most recent comment is displayed first
+  useEffect(() => {
+    console.log(updatedComments);
+    setComments(updatedComments.sort((a, b) => b.timestamp - a.timestamp));
+  }, [updatedComments, selectedVideo]);
 
   // defines time in simple text describing how long since comment was made.
   const formatDate = (time) => {
@@ -44,27 +50,34 @@ function commentsSection({ selectedVideo }) {
     }
   };
 
-  return (
-    <>
-      <section className="comments-section">
-        {comments.map((comment) => (
-          <div className="comments-section__comment-container" key={comment.id}>
-            <div className="comments-section__avatar-wrapper">
-              <div className="comments-section__avatar-container"></div>
-            </div>
-            <div className="comments-section__content">
-              <div className="comments-section__header">
-                <p className="comments-section__name">{comment.name}</p>
-                <p className="comments-section__date">
-                  {formatDate(comment.timestamp)}
-                </p>
+  if (comments == []) {
+    <h2>Loading...</h2>;
+  } else {
+    return (
+      <>
+        <section className="comments-section">
+          {comments.map((comment) => (
+            <div
+              className="comments-section__comment-container"
+              key={comment.id}
+            >
+              <div className="comments-section__avatar-wrapper">
+                <div className="comments-section__avatar-container"></div>
               </div>
-              <p className="comments-section__text">{comment.comment}</p>
+              <div className="comments-section__content">
+                <div className="comments-section__header">
+                  <p className="comments-section__name">{comment.name}</p>
+                  <p className="comments-section__date">
+                    {formatDate(comment.timestamp)}
+                  </p>
+                </div>
+                <p className="comments-section__text">{comment.comment}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
-    </>
-  );
+          ))}
+        </section>
+      </>
+    );
+  }
 }
 export default commentsSection;

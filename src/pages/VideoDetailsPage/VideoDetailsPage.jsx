@@ -58,7 +58,12 @@ function VideoDetailsPage() {
       <section className="page">
         <Header selectedVideo={selectedVideo} />
         <div className="page__section-desktop-flex">
-          <Main selectedVideo={selectedVideo} />
+          <Main
+            selectedVideo={selectedVideo}
+            BASE_URL={BASE_URL}
+            API_KEY={API_KEY}
+            videoId={videoId}
+          />
           <Footer
             filteredVideoList={filteredVideoList}
             setSelectedVideo={setSelectedVideo}
