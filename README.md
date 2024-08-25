@@ -1,7 +1,7 @@
 This is the BrainFlix project for BrainStation
 Created by: Kyle Ingham
 
-BrainFlix Prototype - Sprint 1
+BrainFlix Prototype
 Video Streaming Platform Prototype
 
 # Project Overview:
