@@ -7,7 +7,6 @@ function commentsSection({ selectedVideo, updatedComments, deleteComment }) {
 
   // sets comments to the selected video comment list and sorts so most recent comment is displayed first
   useEffect(() => {
-    console.log(updatedComments); // ***Delete this beofre submission
     setComments(updatedComments.sort((a, b) => b.timestamp - a.timestamp));
   }, [updatedComments]);
 
