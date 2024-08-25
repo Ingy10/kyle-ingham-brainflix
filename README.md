@@ -26,6 +26,7 @@ Video Streaming Platform Prototype
   4. Flexbox
   5. JavaScript
   6. HTML
+  7. Axios
 
 - Challenges faced:
 
@@ -72,6 +73,10 @@ Video Streaming Platform Prototype
           - Comments Section
       - Footer
     - data
+    - pages
+      - HomePage
+      - VideoDetailsPage
+      - VideoUploadPage
     - styles
       - partials
   - .gitignore
