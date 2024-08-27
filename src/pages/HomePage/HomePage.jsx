@@ -30,10 +30,10 @@ function HomePage() {
   // function to get the default video to be loaded on the homepage
   const fetchVideos = async () => {
     try {
-      const videoList = await axios.get(
-        `${BASE_URL}videos/${defaultVideoId}${API_KEY}`
+      const videoDefault = await axios.get(
+        `${NEW_BASE_URL}videos/${defaultVideoId}`
       );
-      setSelectedVideo(videoList.data);
+      setSelectedVideo(videoDefault.data);
     } catch (error) {
       console.error(error);
     }
