@@ -4,18 +4,25 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
+import axios from "axios";
+
+const NEW_BASE_URL = "http://localhost:8080/";
 
 function VideoUploadPage() {
   const [invalidUploadTitle, setInvalidUploadTitle] = useState("");
   const [invalidUploadDescription, setInvalidUploadDescription] = useState("");
   const navigate = useNavigate();
 
-  const uploadSubmit = (event) => {
+  const uploadSubmit = async (event) => {
     event.preventDefault();
     if (event.target.title.value && event.target.description.value) {
       console.log(`Title: ${event.target.title.value}`);
       console.log(`Description: ${event.target.description.value}`);
-      alert("Upload Successful!");
+      const uploadVideo = await axios.post(`${NEW_BASE_URL}videos`, {
+        title: event.target.title.value,
+        description: event.target.description.value,
+      });
+      alert(`Upload Successful! ${uploadVideo}`);
       event.target.title.value = "";
       event.target.description.value = "";
       setInvalidUploadTitle("");

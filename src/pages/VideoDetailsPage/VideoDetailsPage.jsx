@@ -8,6 +8,7 @@ import axios from "axios";
 
 const BASE_URL = "https://unit-3-project-api-0a5620414506.herokuapp.com/";
 const API_KEY = "?api_key=278b0386-e13d-48c9-968b-5dffeb950f5a";
+const NEW_BASE_URL = "http://localhost:8080/";
 
 function VideoDetailsPage() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -18,7 +19,7 @@ function VideoDetailsPage() {
   const clickedVideo = async () => {
     try {
       const currentSelectedVideo = await axios.get(
-        `${BASE_URL}videos/${videoId}${API_KEY}`
+        `${NEW_BASE_URL}videos/${videoId}`
       );
       setSelectedVideo(currentSelectedVideo.data);
     } catch (error) {
@@ -34,7 +35,7 @@ function VideoDetailsPage() {
   // creates a list of videos that does not include the selected video and assigns it to filteredVideoList
   const updateVideoList = async () => {
     try {
-      const videoList = await axios.get(`${BASE_URL}videos/${API_KEY}`);
+      const videoList = await axios.get(`${NEW_BASE_URL}videos`);
       const fullVideoList = videoList.data;
       setFilteredVideoList(
         fullVideoList.filter((video) => video.id !== selectedVideo.id)
