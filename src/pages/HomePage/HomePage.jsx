@@ -7,6 +7,7 @@ import axios from "axios";
 
 const BASE_URL = "https://unit-3-project-api-0a5620414506.herokuapp.com/";
 const API_KEY = "?api_key=278b0386-e13d-48c9-968b-5dffeb950f5a";
+const NEW_BASE_URL = "http://localhost:8080/";
 
 function HomePage() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -17,7 +18,8 @@ function HomePage() {
   /* I decided to use this initial function to grab the video list and get the id of the first video.  This seemed like a better solution than hardcoding the id of the first video in the default video get request, as the video list may change over time */
   const fetchVideoList = async () => {
     try {
-      const videoList = await axios.get(`${BASE_URL}videos/${API_KEY}`);
+      const videoList = await axios.get(`${NEW_BASE_URL}videos`);
+      console.log(videoList);
       setDefaultVideoId(videoList.data[0].id);
       setVideoListArray(videoList.data);
     } catch (error) {
