@@ -73,6 +73,7 @@ function HomePage() {
             defaultVideoId={defaultVideoId}
             BASE_URL={BASE_URL}
             API_KEY={API_KEY}
+            NEW_BASE_URL={NEW_BASE_URL}
           />
           <Footer
             filteredVideoList={filteredVideoList}

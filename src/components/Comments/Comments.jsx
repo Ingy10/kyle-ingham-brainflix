@@ -11,6 +11,7 @@ function Comments({
   API_KEY,
   videoId,
   defaultVideoId,
+  NEW_BASE_URL,
 }) {
   const [currentComment, setCurrentComment] = useState("");
   const [invalidComment, setInvalidComment] = useState("");
@@ -58,14 +59,14 @@ function Comments({
     }
     try {
       const comment = await axios.post(
-        `${BASE_URL}videos/${newId}/comments${API_KEY}`,
+        `${NEW_BASE_URL}videos/${newId}/comments`,
         {
           name: newName,
           comment: newComment,
         }
       );
-      const newCommentList = [comment.data, ...updatedComments];
-      selectedVideo.comments = newCommentList;
+
+      const newCommentList = comment.data;
       setUpdatedComments(newCommentList);
     } catch (error) {
       console.error(error);

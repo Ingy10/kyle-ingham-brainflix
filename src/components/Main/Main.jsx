@@ -3,7 +3,14 @@ import Comments from "../Comments/Comments";
 import viewIcon from "../../assets/icons/views.svg";
 import likeIcon from "../../assets/icons/likes.svg";
 
-function Main({ selectedVideo, BASE_URL, API_KEY, videoId, defaultVideoId }) {
+function Main({
+  selectedVideo,
+  BASE_URL,
+  API_KEY,
+  videoId,
+  defaultVideoId,
+  NEW_BASE_URL,
+}) {
   const date = new Date(selectedVideo.timestamp);
 
   return (
@@ -43,6 +50,7 @@ function Main({ selectedVideo, BASE_URL, API_KEY, videoId, defaultVideoId }) {
           API_KEY={API_KEY}
           videoId={videoId}
           defaultVideoId={defaultVideoId}
+          NEW_BASE_URL={NEW_BASE_URL}
         />
       </main>
     </>
