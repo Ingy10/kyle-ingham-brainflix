@@ -1,4 +1,4 @@
-import "./VideoDetailsPage";
+import "./MainVideoPage";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
@@ -10,16 +10,37 @@ const BASE_URL = "https://unit-3-project-api-0a5620414506.herokuapp.com/";
 const API_KEY = "?api_key=278b0386-e13d-48c9-968b-5dffeb950f5a";
 const NEW_BASE_URL = "http://localhost:8080/";
 
-function VideoDetailsPage() {
+function MainVideoPage() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [filteredVideoList, setFilteredVideoList] = useState([]);
   const { videoId } = useParams();
+  const [defaultVideoId, setDefaultVideoId] = useState("");
+  const [videoListArray, setVideoListArray] = useState([]);
+
+  /* I decided to use this initial function to grab the video list and get the id of the first video.  This seemed like a better solution than hardcoding the id of the first video in the default video get request, as the video list may change over time */
+  const fetchVideoList = async () => {
+    try {
+      const videoList = await axios.get(`${NEW_BASE_URL}videos`);
+      setVideoListArray(videoList.data);
+
+      if (videoId === undefined) {
+        setDefaultVideoId(videoList.data[0].id);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // gets the array of videos, running only once as page renders
+  useEffect(() => {
+    fetchVideoList();
+  }, []);
 
   // Selects video based on videoId determined by which video is clicked
-  const clickedVideo = async () => {
+  const clickedVideo = async (id) => {
     try {
       const currentSelectedVideo = await axios.get(
-        `${NEW_BASE_URL}videos/${videoId}`
+        `${NEW_BASE_URL}videos/${id}`
       );
       setSelectedVideo(currentSelectedVideo.data);
     } catch (error) {
@@ -29,20 +50,18 @@ function VideoDetailsPage() {
 
   // runs clickedVideo function once change in videoId is detected
   useEffect(() => {
-    clickedVideo();
-  }, [videoId]);
+    if (videoId) {
+      clickedVideo(videoId);
+    } else if (defaultVideoId) {
+      clickedVideo(defaultVideoId);
+    }
+  }, [videoId, defaultVideoId]);
 
   // creates a list of videos that does not include the selected video and assigns it to filteredVideoList
   const updateVideoList = async () => {
-    try {
-      const videoList = await axios.get(`${NEW_BASE_URL}videos`);
-      const fullVideoList = videoList.data;
-      setFilteredVideoList(
-        fullVideoList.filter((video) => video.id !== selectedVideo.id)
-      );
-    } catch (error) {
-      console.error(error);
-    }
+    setFilteredVideoList(
+      videoListArray.filter((video) => video.id !== selectedVideo.id)
+    );
   };
 
   // runs updateVideoList function once selectedVido changes and it has a non-null value
@@ -53,7 +72,7 @@ function VideoDetailsPage() {
   }, [selectedVideo]);
 
   if (!selectedVideo || filteredVideoList === 0) {
-    <h2>Loading...</h2>;
+    return <h2>Loading...</h2>;
   } else {
     return (
       <section className="page">
@@ -65,6 +84,7 @@ function VideoDetailsPage() {
             API_KEY={API_KEY}
             videoId={videoId}
             NEW_BASE_URL={NEW_BASE_URL}
+            defaultVideoId={defaultVideoId}
           />
           <Footer
             filteredVideoList={filteredVideoList}
@@ -75,4 +95,4 @@ function VideoDetailsPage() {
     );
   }
 }
-export default VideoDetailsPage;
+export default MainVideoPage;
