@@ -82,10 +82,10 @@ function Comments({
   async function deleteComment(id) {
     try {
       const delComment = await axios.delete(
-        `${BASE_URL}videos/${selectedVideo.id}/comments/${id}${API_KEY}`
+        `${NEW_BASE_URL}videos/${selectedVideo.id}/comments/${id}`
       );
       const newComments = await axios.get(
-        `${BASE_URL}videos/${selectedVideo.id}${API_KEY}`
+        `${NEW_BASE_URL}videos/${selectedVideo.id}`
       );
       setUpdatedComments(newComments.data.comments);
     } catch (error) {
