@@ -5,8 +5,9 @@ import NavBar from "../../components/NavBar/NavBar";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
 import axios from "axios";
+import { HOST_URL } from "../../../util.js";
 
-const NEW_BASE_URL = "http://localhost:8080/";
+const NEW_BASE_URL = HOST_URL;
 
 function VideoUploadPage() {
   const [invalidUploadTitle, setInvalidUploadTitle] = useState("");
@@ -16,17 +17,34 @@ function VideoUploadPage() {
   const uploadSubmit = async (event) => {
     event.preventDefault();
     if (event.target.title.value && event.target.description.value) {
-      await axios.post(`${NEW_BASE_URL}videos`, {
-        title: event.target.title.value,
-        description: event.target.description.value,
-        image: `/images/${event.target.image.value}`,
-      });
-      alert(`${event.target.title.value} was uploaded successfully!`);
-      event.target.title.value = "";
-      event.target.description.value = "";
-      setInvalidUploadTitle("");
-      setInvalidUploadDescription("");
-      navigate("/");
+      const formData = new FormData();
+
+      formData.append("title", event.target.title.value);
+      formData.append("description", event.target.description.value);
+
+      const fileInput = event.target.image;
+      if (fileInput.files.length > 0) {
+        formData.append("image", fileInput.files[0]);
+      }
+      for (const pair of formData.entries()) {
+        console.log(pair[0] + ":", pair[1]);
+      }
+      try {
+        await axios.post(`${NEW_BASE_URL}videos`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        alert(`${event.target.title.value} was uploaded successfully!`);
+        event.target.title.value = "";
+        event.target.description.value = "";
+        setInvalidUploadTitle("");
+        setInvalidUploadDescription("");
+        navigate("/");
+      } catch (error) {
+        console.error(error);
+      }
     } else if (!event.target.title.value) {
       setInvalidUploadTitle("upload-video__input-title--invalid");
       if (event.target.description.value) {
@@ -105,7 +123,12 @@ function VideoUploadPage() {
                 >
                   ADD A POSTER IMAGE
                 </label>
-                <input type="file" id="image" accept="image/*" />
+                <input
+                  className="upload-video__input-image"
+                  type="file"
+                  id="image"
+                  accept="image/*"
+                />
               </div>
             </div>
             <div className="upload-video__button-section">
