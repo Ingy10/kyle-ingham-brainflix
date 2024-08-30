@@ -16,13 +16,12 @@ function VideoUploadPage() {
   const uploadSubmit = async (event) => {
     event.preventDefault();
     if (event.target.title.value && event.target.description.value) {
-      console.log(`Title: ${event.target.title.value}`);
-      console.log(`Description: ${event.target.description.value}`);
-      const uploadVideo = await axios.post(`${NEW_BASE_URL}videos`, {
+      await axios.post(`${NEW_BASE_URL}videos`, {
         title: event.target.title.value,
         description: event.target.description.value,
+        image: "http://localhost:8080/images/Upload-video-preview.jpg",
       });
-      alert(`Upload Successful! ${uploadVideo}`);
+      alert(`${event.target.title.value} was uploaded successfully!`);
       event.target.title.value = "";
       event.target.description.value = "";
       setInvalidUploadTitle("");
