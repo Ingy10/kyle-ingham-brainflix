@@ -19,7 +19,7 @@ function VideoUploadPage() {
       await axios.post(`${NEW_BASE_URL}videos`, {
         title: event.target.title.value,
         description: event.target.description.value,
-        image: "http://localhost:8080/images/Upload-video-preview.jpg",
+        image: `/images/${event.target.image.value}`,
       });
       alert(`${event.target.title.value} was uploaded successfully!`);
       event.target.title.value = "";
@@ -99,6 +99,13 @@ function VideoUploadPage() {
                   placeholder="Add a description to your video"
                   onChange={inputChange}
                 />
+                <label
+                  className="upload-video__input-image--label"
+                  htmlFor="image"
+                >
+                  ADD A POSTER IMAGE
+                </label>
+                <input type="file" id="image" accept="image/*" />
               </div>
             </div>
             <div className="upload-video__button-section">

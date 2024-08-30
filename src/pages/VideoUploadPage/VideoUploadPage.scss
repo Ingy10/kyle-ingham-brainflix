@@ -124,6 +124,20 @@
       }
     }
   }
+  &__input-image {
+    &--label {
+      color: $p-color-silver;
+      @include mobile-subheader-font;
+      padding-top: $full-unit;
+      padding-bottom: 0.2rem;
+      @include tablet {
+        @include desktop-section-header-font;
+      }
+      @include desktop {
+        padding-top: $half-unit;
+      }
+    }
+  }
   &__button-section {
     @include tablet {
       display: flex;

@@ -1,6 +1,5 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import HomePage from "./pages/HomePage/HomePage";
 import MainVideoPage from "./pages/MainVideoPage/MainVideoPage";
 import VideoUploadPage from "./pages/VideoUploadPage/VideoUploadPage";
 

@@ -1,5 +1,6 @@
 import "./Footer.scss";
 import { Link } from "react-router-dom";
+import { HOST_URL } from "../../../util.js";
 
 function VideoList({ filteredVideoList }) {
   return (
@@ -16,7 +17,7 @@ function VideoList({ filteredVideoList }) {
                 >
                   <img
                     className="video-list__thumbnail-image"
-                    src={video.image}
+                    src={`${HOST_URL}${video.image}`}
                     alt={video.title}
                   />
                 </Link>
