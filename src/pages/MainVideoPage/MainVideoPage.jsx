@@ -71,6 +71,27 @@ function MainVideoPage() {
     }
   }, [selectedVideo]);
 
+  // function to increment likes on a given video
+  const incrementVideoLikes = async () => {
+    try {
+      if (videoId) {
+        console.log(videoId);
+        await axios.put(`${NEW_BASE_URL}videos/${videoId}`);
+        const video = await axios.get(`${NEW_BASE_URL}videos/${videoId}`);
+        setSelectedVideo(video.data);
+      } else {
+        console.log(defaultVideoId);
+        await axios.put(`${NEW_BASE_URL}videos/${defaultVideoId}`);
+        const video = await axios.get(
+          `${NEW_BASE_URL}videos/${defaultVideoId}`
+        );
+        setSelectedVideo(video.data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!selectedVideo || filteredVideoList === 0) {
     return <h2>Loading...</h2>;
   } else {
@@ -85,6 +106,7 @@ function MainVideoPage() {
             videoId={videoId}
             NEW_BASE_URL={NEW_BASE_URL}
             defaultVideoId={defaultVideoId}
+            incrementVideoLikes={incrementVideoLikes}
           />
           <Footer
             filteredVideoList={filteredVideoList}

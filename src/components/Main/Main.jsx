@@ -10,8 +10,9 @@ function Main({
   videoId,
   defaultVideoId,
   NEW_BASE_URL,
+  incrementVideoLikes,
 }) {
-  const date = new Date(selectedVideo.timestamp);
+  const date = new Date(selectedVideo.timestamp)
 
   return (
     <>
@@ -33,7 +34,7 @@ function Main({
                 {selectedVideo.views}
               </p>
             </div>
-            <div className="main__video-data--4">
+            <div className="main__video-data--4" onClick={incrementVideoLikes}>
               <img className="main__video-data--like-icon" src={likeIcon} />
               <p className="main__video-data--like-text">
                 {selectedVideo.likes}

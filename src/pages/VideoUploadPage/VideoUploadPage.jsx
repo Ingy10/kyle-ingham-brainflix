@@ -30,7 +30,7 @@ function VideoUploadPage() {
         console.log(pair[0] + ":", pair[1]);
       }
       try {
-        await axios.post(`${NEW_BASE_URL}videos`, formData, {
+        await axios.post(`${NEW_BASE_URL}/videos`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
