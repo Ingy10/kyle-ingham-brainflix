@@ -12,7 +12,7 @@ function Main({
   NEW_BASE_URL,
   incrementVideoLikes,
 }) {
-  const date = new Date(selectedVideo.timestamp)
+  const date = new Date(selectedVideo.timestamp);
 
   return (
     <>
@@ -47,8 +47,6 @@ function Main({
         </section>
         <Comments
           selectedVideo={selectedVideo}
-          BASE_URL={BASE_URL}
-          API_KEY={API_KEY}
           videoId={videoId}
           defaultVideoId={defaultVideoId}
           NEW_BASE_URL={NEW_BASE_URL}

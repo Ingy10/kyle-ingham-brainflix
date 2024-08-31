@@ -6,9 +6,7 @@ import Main from "../../components/Main/Main";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 
-const BASE_URL = "https://unit-3-project-api-0a5620414506.herokuapp.com/";
-const API_KEY = "?api_key=278b0386-e13d-48c9-968b-5dffeb950f5a";
-const NEW_BASE_URL = "http://localhost:8080/";
+const NEW_BASE_URL = import.meta.env.VITE_HOST_URL;
 
 function MainVideoPage() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -20,7 +18,7 @@ function MainVideoPage() {
   /* I decided to use this initial function to grab the video list and get the id of the first video.  This seemed like a better solution than hardcoding the id of the first video in the default video get request, as the video list may change over time */
   const fetchVideoList = async () => {
     try {
-      const videoList = await axios.get(`${NEW_BASE_URL}videos`);
+      const videoList = await axios.get(`${NEW_BASE_URL}/videos`);
       setVideoListArray(videoList.data);
 
       if (videoId === undefined) {
@@ -40,7 +38,7 @@ function MainVideoPage() {
   const clickedVideo = async (id) => {
     try {
       const currentSelectedVideo = await axios.get(
-        `${NEW_BASE_URL}videos/${id}`
+        `${NEW_BASE_URL}/videos/${id}`
       );
       setSelectedVideo(currentSelectedVideo.data);
     } catch (error) {
@@ -75,15 +73,13 @@ function MainVideoPage() {
   const incrementVideoLikes = async () => {
     try {
       if (videoId) {
-        console.log(videoId);
-        await axios.put(`${NEW_BASE_URL}videos/${videoId}`);
-        const video = await axios.get(`${NEW_BASE_URL}videos/${videoId}`);
+        await axios.put(`${NEW_BASE_URL}/videos/${videoId}`);
+        const video = await axios.get(`${NEW_BASE_URL}/videos/${videoId}`);
         setSelectedVideo(video.data);
       } else {
-        console.log(defaultVideoId);
-        await axios.put(`${NEW_BASE_URL}videos/${defaultVideoId}`);
+        await axios.put(`${NEW_BASE_URL}/videos/${defaultVideoId}`);
         const video = await axios.get(
-          `${NEW_BASE_URL}videos/${defaultVideoId}`
+          `${NEW_BASE_URL}/videos/${defaultVideoId}`
         );
         setSelectedVideo(video.data);
       }
@@ -97,12 +93,10 @@ function MainVideoPage() {
   } else {
     return (
       <section className="page">
-        <Header selectedVideo={selectedVideo} />
+        <Header selectedVideo={selectedVideo} NEW_BASE_URL={NEW_BASE_URL} />
         <div className="page__section-desktop-flex">
           <Main
             selectedVideo={selectedVideo}
-            BASE_URL={BASE_URL}
-            API_KEY={API_KEY}
             videoId={videoId}
             NEW_BASE_URL={NEW_BASE_URL}
             defaultVideoId={defaultVideoId}
@@ -111,6 +105,7 @@ function MainVideoPage() {
           <Footer
             filteredVideoList={filteredVideoList}
             setSelectedVideo={setSelectedVideo}
+            NEW_BASE_URL={NEW_BASE_URL}
           />
         </div>
       </section>

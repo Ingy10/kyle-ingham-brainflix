@@ -1,8 +1,7 @@
 import "./Header.scss";
 import NavBar from "../NavBar/NavBar";
-import { HOST_URL } from "../../../util.js";
 
-function Header({ selectedVideo }) {
+function Header({ selectedVideo, NEW_BASE_URL }) {
   return (
     <>
       <header className="header">
@@ -12,7 +11,7 @@ function Header({ selectedVideo }) {
             <video
               className="header__video-player"
               src={selectedVideo.video + "?api_key=kyle" + Math.random()}
-              poster={`${HOST_URL}${selectedVideo.image}`}
+              poster={`${NEW_BASE_URL}${selectedVideo.image}`}
               controls
             ></video>
           </div>

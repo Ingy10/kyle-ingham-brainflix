@@ -5,9 +5,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
 import axios from "axios";
-import { HOST_URL } from "../../../util.js";
 
-const NEW_BASE_URL = HOST_URL;
+const NEW_BASE_URL = import.meta.env.VITE_HOST_URL;
 
 function VideoUploadPage() {
   const [invalidUploadTitle, setInvalidUploadTitle] = useState("");
@@ -26,9 +25,7 @@ function VideoUploadPage() {
       if (fileInput.files.length > 0) {
         formData.append("image", fileInput.files[0]);
       }
-      for (const pair of formData.entries()) {
-        console.log(pair[0] + ":", pair[1]);
-      }
+
       try {
         await axios.post(`${NEW_BASE_URL}/videos`, formData, {
           headers: {

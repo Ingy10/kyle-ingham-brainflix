@@ -5,14 +5,7 @@ import CommentsSection from "../CommentsSection/CommentsSection.jsx";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Comments({
-  selectedVideo,
-  BASE_URL,
-  API_KEY,
-  videoId,
-  defaultVideoId,
-  NEW_BASE_URL,
-}) {
+function Comments({ selectedVideo, videoId, defaultVideoId, NEW_BASE_URL }) {
   const [currentComment, setCurrentComment] = useState("");
   const [invalidComment, setInvalidComment] = useState("");
   const [updatedComments, setUpdatedComments] = useState(
@@ -59,7 +52,7 @@ function Comments({
     }
     try {
       const comment = await axios.post(
-        `${NEW_BASE_URL}videos/${newId}/comments`,
+        `${NEW_BASE_URL}/videos/${newId}/comments`,
         {
           name: newName,
           comment: newComment,
@@ -82,10 +75,10 @@ function Comments({
   async function deleteComment(id) {
     try {
       const delComment = await axios.delete(
-        `${NEW_BASE_URL}videos/${selectedVideo.id}/comments/${id}`
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}/comments/${id}`
       );
       const newComments = await axios.get(
-        `${NEW_BASE_URL}videos/${selectedVideo.id}`
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}`
       );
       setUpdatedComments(newComments.data.comments);
     } catch (error) {
@@ -97,10 +90,10 @@ function Comments({
   async function likeIncrementer(id) {
     try {
       const like = await axios.put(
-        `${NEW_BASE_URL}videos/${selectedVideo.id}/comments/${id}`
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}/comments/${id}`
       );
       const newComments = await axios.get(
-        `${NEW_BASE_URL}videos/${selectedVideo.id}`
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}`
       );
 
       setUpdatedComments(newComments.data.comments);
