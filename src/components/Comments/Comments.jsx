@@ -93,6 +93,22 @@ function Comments({
     }
   }
 
+  // funciton to increment likes for any given comment and updates counter immediately.
+  async function likeIncrementer(id) {
+    try {
+      const like = await axios.put(
+        `${NEW_BASE_URL}videos/${selectedVideo.id}/comments/${id}`
+      );
+      const newComments = await axios.get(
+        `${NEW_BASE_URL}videos/${selectedVideo.id}`
+      );
+
+      setUpdatedComments(newComments.data.comments);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <section className="comments">
@@ -135,6 +151,7 @@ function Comments({
         updatedComments={updatedComments}
         videoId={videoId}
         deleteComment={deleteComment}
+        likeIncrementer={likeIncrementer}
       />
     </>
   );

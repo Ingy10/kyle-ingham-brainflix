@@ -2,7 +2,12 @@ import "./CommentsSection.scss";
 import { useState, useEffect } from "react";
 import likeIcon from "../../assets/icons/likes.svg";
 
-function commentsSection({ selectedVideo, updatedComments, deleteComment }) {
+function commentsSection({
+  selectedVideo,
+  updatedComments,
+  deleteComment,
+  likeIncrementer,
+}) {
   const [comments, setComments] = useState([]);
 
   // sets comments to the selected video comment list and sorts so most recent comment is displayed first
@@ -80,7 +85,10 @@ function commentsSection({ selectedVideo, updatedComments, deleteComment }) {
                 </div>
                 <p className="comments-section__text">{comment.comment}</p>
                 <div className="comments-section__footer">
-                  <span className="comments-section__likes-container">
+                  <span
+                    className="comments-section__likes-container"
+                    onClick={() => likeIncrementer(comment.id)}
+                  >
                     <img
                       className="comments-section__likes-icon"
                       src={likeIcon}
