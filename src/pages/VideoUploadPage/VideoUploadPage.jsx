@@ -84,6 +84,7 @@ function VideoUploadPage() {
                     className="upload-video__thumbnail-img"
                     src={thumbnail}
                     id="thumbnail"
+                    alt="Video thumbnail image"
                   />
                 </div>
               </div>

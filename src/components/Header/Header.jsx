@@ -12,6 +12,7 @@ function Header({ selectedVideo, NEW_BASE_URL }) {
               className="header__video-player"
               src={selectedVideo.video + "?api_key=kyle" + Math.random()}
               poster={`${NEW_BASE_URL}${selectedVideo.image}`}
+              alt={`${selectedVideo.title}`}
               controls
             ></video>
           </div>
