@@ -55,10 +55,18 @@ function NavBar() {
               onKeyDown={pressEnter}
               onChange={inputChange}
             ></input>
-            <img className="nav__input-search--icon" src={magnifyIcon} />
+            <img
+              className="nav__input-search--icon"
+              src={magnifyIcon}
+              alt="Magnifying glass icon"
+            />
           </div>
           <div className="nav__avatar-container--mobile">
-            <img className="nav__avatar-image" src={profileImage} />
+            <img
+              className="nav__avatar-image"
+              src={profileImage}
+              alt="Avatar image"
+            />
           </div>
         </div>
         <div className="nav__CTA-button-wrapper">
@@ -68,7 +76,11 @@ function NavBar() {
           <img className="nav__CTA-button-upload--icon" src={download} />
         </div>
         <div className="nav__avatar-container--desktop">
-          <img className="nav__avatar-image" src={profileImage} />
+          <img
+            className="nav__avatar-image"
+            src={profileImage}
+            alt="Avatar image"
+          />
         </div>
       </div>
     </section>

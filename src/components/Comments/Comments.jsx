@@ -5,13 +5,7 @@ import CommentsSection from "../CommentsSection/CommentsSection.jsx";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Comments({
-  selectedVideo,
-  BASE_URL,
-  API_KEY,
-  videoId,
-  defaultVideoId,
-}) {
+function Comments({ selectedVideo, videoId, defaultVideoId, NEW_BASE_URL }) {
   const [currentComment, setCurrentComment] = useState("");
   const [invalidComment, setInvalidComment] = useState("");
   const [updatedComments, setUpdatedComments] = useState(
@@ -58,14 +52,14 @@ function Comments({
     }
     try {
       const comment = await axios.post(
-        `${BASE_URL}videos/${newId}/comments${API_KEY}`,
+        `${NEW_BASE_URL}/videos/${newId}/comments`,
         {
           name: newName,
           comment: newComment,
         }
       );
-      const newCommentList = [comment.data, ...updatedComments];
-      selectedVideo.comments = newCommentList;
+
+      const newCommentList = comment.data;
       setUpdatedComments(newCommentList);
     } catch (error) {
       console.error(error);
@@ -81,11 +75,27 @@ function Comments({
   async function deleteComment(id) {
     try {
       const delComment = await axios.delete(
-        `${BASE_URL}videos/${selectedVideo.id}/comments/${id}${API_KEY}`
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}/comments/${id}`
       );
       const newComments = await axios.get(
-        `${BASE_URL}videos/${selectedVideo.id}${API_KEY}`
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}`
       );
+      setUpdatedComments(newComments.data.comments);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // funciton to increment likes for any given comment and updates counter immediately.
+  async function likeIncrementer(id) {
+    try {
+      const like = await axios.put(
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}/comments/${id}`
+      );
+      const newComments = await axios.get(
+        `${NEW_BASE_URL}/videos/${selectedVideo.id}`
+      );
+
       setUpdatedComments(newComments.data.comments);
     } catch (error) {
       console.error(error);
@@ -134,6 +144,7 @@ function Comments({
         updatedComments={updatedComments}
         videoId={videoId}
         deleteComment={deleteComment}
+        likeIncrementer={likeIncrementer}
       />
     </>
   );

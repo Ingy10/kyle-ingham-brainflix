@@ -75,6 +75,12 @@
         padding-right: 2rem;
       }
     }
+    &--4 {
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
   &__video-container-1 {
     width: 50%;

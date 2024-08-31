@@ -3,7 +3,13 @@ import Comments from "../Comments/Comments";
 import viewIcon from "../../assets/icons/views.svg";
 import likeIcon from "../../assets/icons/likes.svg";
 
-function Main({ selectedVideo, BASE_URL, API_KEY, videoId, defaultVideoId }) {
+function Main({
+  selectedVideo,
+  videoId,
+  defaultVideoId,
+  NEW_BASE_URL,
+  incrementVideoLikes,
+}) {
   const date = new Date(selectedVideo.timestamp);
 
   return (
@@ -21,13 +27,21 @@ function Main({ selectedVideo, BASE_URL, API_KEY, videoId, defaultVideoId }) {
           </div>
           <div className="main__video-container-2">
             <div className="main__video-data--3">
-              <img className="main__video-data--view-icon" src={viewIcon} />
+              <img
+                className="main__video-data--view-icon"
+                src={viewIcon}
+                alt="View icon"
+              />
               <p className="main__video-data--view-text">
                 {selectedVideo.views}
               </p>
             </div>
-            <div className="main__video-data--4">
-              <img className="main__video-data--like-icon" src={likeIcon} />
+            <div className="main__video-data--4" onClick={incrementVideoLikes}>
+              <img
+                className="main__video-data--like-icon"
+                src={likeIcon}
+                alt="Heart icon"
+              />
               <p className="main__video-data--like-text">
                 {selectedVideo.likes}
               </p>
@@ -39,10 +53,9 @@ function Main({ selectedVideo, BASE_URL, API_KEY, videoId, defaultVideoId }) {
         </section>
         <Comments
           selectedVideo={selectedVideo}
-          BASE_URL={BASE_URL}
-          API_KEY={API_KEY}
           videoId={videoId}
           defaultVideoId={defaultVideoId}
+          NEW_BASE_URL={NEW_BASE_URL}
         />
       </main>
     </>

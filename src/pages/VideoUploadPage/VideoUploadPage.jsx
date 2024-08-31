@@ -4,23 +4,44 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
+import axios from "axios";
+
+const NEW_BASE_URL = import.meta.env.VITE_HOST_URL;
 
 function VideoUploadPage() {
   const [invalidUploadTitle, setInvalidUploadTitle] = useState("");
   const [invalidUploadDescription, setInvalidUploadDescription] = useState("");
   const navigate = useNavigate();
 
-  const uploadSubmit = (event) => {
+  const uploadSubmit = async (event) => {
     event.preventDefault();
     if (event.target.title.value && event.target.description.value) {
-      console.log(`Title: ${event.target.title.value}`);
-      console.log(`Description: ${event.target.description.value}`);
-      alert("Upload Successful!");
-      event.target.title.value = "";
-      event.target.description.value = "";
-      setInvalidUploadTitle("");
-      setInvalidUploadDescription("");
-      navigate("/");
+      const formData = new FormData();
+
+      formData.append("title", event.target.title.value);
+      formData.append("description", event.target.description.value);
+
+      const fileInput = event.target.image;
+      if (fileInput.files.length > 0) {
+        formData.append("image", fileInput.files[0]);
+      }
+
+      try {
+        await axios.post(`${NEW_BASE_URL}/videos`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        alert(`${event.target.title.value} was uploaded successfully!`);
+        event.target.title.value = "";
+        event.target.description.value = "";
+        setInvalidUploadTitle("");
+        setInvalidUploadDescription("");
+        navigate("/");
+      } catch (error) {
+        console.error(error);
+      }
     } else if (!event.target.title.value) {
       setInvalidUploadTitle("upload-video__input-title--invalid");
       if (event.target.description.value) {
@@ -63,6 +84,7 @@ function VideoUploadPage() {
                     className="upload-video__thumbnail-img"
                     src={thumbnail}
                     id="thumbnail"
+                    alt="Video thumbnail image"
                   />
                 </div>
               </div>
@@ -92,6 +114,18 @@ function VideoUploadPage() {
                   type="text"
                   placeholder="Add a description to your video"
                   onChange={inputChange}
+                />
+                <label
+                  className="upload-video__input-image--label"
+                  htmlFor="image"
+                >
+                  ADD A POSTER IMAGE
+                </label>
+                <input
+                  className="upload-video__input-image"
+                  type="file"
+                  id="image"
+                  accept="image/*"
                 />
               </div>
             </div>

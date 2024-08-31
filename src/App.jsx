@@ -1,7 +1,6 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import VideoDetailsPage from "./pages/VideoDetailsPage/VideoDetailsPage";
+import MainVideoPage from "./pages/MainVideoPage/MainVideoPage";
 import VideoUploadPage from "./pages/VideoUploadPage/VideoUploadPage";
 
 function App() {
@@ -9,8 +8,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="videos/:videoId" element={<VideoDetailsPage />} />
+          <Route path="/" element={<MainVideoPage />} />
+          <Route path="videos/:videoId" element={<MainVideoPage />} />
           <Route path="VideoUploadPage" element={<VideoUploadPage />} />
         </Routes>
       </BrowserRouter>
