@@ -12,7 +12,17 @@ function VideoUploadPage() {
   const [invalidUploadTitle, setInvalidUploadTitle] = useState("");
   const [invalidUploadDescription, setInvalidUploadDescription] = useState("");
   const navigate = useNavigate();
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
 
+  // function to create image preview 
+  const imageUpload = (event) => {
+    if (event.target.files[0]) {
+      const previewUrl = URL.createObjectURL(event.target.files[0]);
+      setImagePreviewUrl(previewUrl);
+    }
+  };
+
+  // funciton to submit new video upload
   const uploadSubmit = async (event) => {
     event.preventDefault();
     if (event.target.title.value && event.target.description.value) {
@@ -58,8 +68,6 @@ function VideoUploadPage() {
   const inputChange = (event) => {
     if (event.target.value) {
       setInvalidUploadTitle("");
-    }
-    if (event.target.value) {
       setInvalidUploadDescription("");
     }
   };
@@ -82,7 +90,7 @@ function VideoUploadPage() {
                 <div className="upload-video__image-container">
                   <img
                     className="upload-video__thumbnail-img"
-                    src={thumbnail}
+                    src={imagePreviewUrl || thumbnail}
                     id="thumbnail"
                     alt="Video thumbnail image"
                   />
@@ -126,6 +134,7 @@ function VideoUploadPage() {
                   type="file"
                   id="image"
                   accept="image/*"
+                  onChange={imageUpload}
                 />
               </div>
             </div>
