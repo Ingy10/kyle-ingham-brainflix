@@ -1,86 +1,161 @@
-This is the BrainFlix project for BrainStation
-Created by: Kyle Ingham
+# 🎥 BrainFlix - Video Streaming Platform
 
-BrainFlix Video Streaming Platform Prototype
+A full-stack video streaming platform prototype built with React and Express, featuring dynamic content loading, video playback, and user interactions.
 
-# Project Overview:
+## 🌟 Live Demo
 
-- Project Description:
+[Project Screenshot - Landing Page](./assets/screenshots/"BrainFlix Kyle Ingham - Main Page.png")
 
-  BrainFlix is a prototype for a video streaming platform designed to demonstrate the potential of a new startup idea. Developed to assist an entrepreneur in securing funding from venture capitalists, BrainFlix showcases a responsive and functional app prototype based on provided designs and mockups. The project involves creating dynamic components with React, ensuring a seamless user experience, and adhering to modern design principles.
+[Project Screenshot - Upload Page](./assets/screenshots/"BrainFlix Kyle Ingham - Upload Page.png")
 
-- What the application does:
+## ⚡ Key Features
 
-  1. Displays a main video with dynamic details and comments.
-  2. Provides a sidebar with next videos, excluding the currently displayed one.
-  3. Allows users to click on side videos to update the main video section dynamically.
-  4. Implements responsive design to ensure usability across various devices and screen sizes.
-  5. Allows users to play given video with functional video controls.
+- 📺 Dynamic video playback with custom controls
+- 💬 Interactive comment system with real-time updates
+- 📤 Video upload simulation with image thumbnails
+- 📱 Fully responsive design across all devices
+- 🔄 Real-time content updates via API
+- 🎨 Sleek, modern UI based on professional mockups
 
-- Technologies used:
+## 🛠️ Tech Stack
 
-  1. React
-  2. Vite
-  3. SASS
-  4. Flexbox
-  5. JavaScript
-  6. HTML
-  7. Axios
+### Frontend
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Sass](https://img.shields.io/badge/-Sass-CC6699?style=flat-square&logo=sass&logoColor=white)
+![Axios](https://img.shields.io/badge/-Axios-671DDF?style=flat-square&logo=axios&logoColor=white)
 
-- Challenges faced:
+### Backend
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express&logoColor=white)
+![Multer](https://img.shields.io/badge/-Multer-FF6B6B?style=flat-square&logoColor=white)
 
-  1. Ensuring the dynamic update of the main video section based on user interactions.
-  2. Ensuring video list is updated and removes selected video from list.
-  3. Implementing a responsive design that closely matches the provided mockups.
+## 🚀 Quick Start
 
-- Future features:
+### Frontend Setup
+```bash
+# Clone the frontend repository
+git clone https://github.com/Ingy10/kyle-ingham-brainflix.git
+cd kyle-ingham-brainflix
 
-  1. A fully functional comments section allowing users to post new comments.
-  2. Enhanced video player styling.
+# Install dependencies
+npm install
 
-- Installation:
+# Start development server
+npm run dev
+```
 
-  - To get started with the BrainFlix prototype, follow these steps:
-    1. Clone the repository
-       - git clone https://github.com/Ingy10/kyle-ingham-brainflix.git
-       - cd kyle-ingham-brainflix
-    2. Install Dependencies
-       - npm install
-    3. Run the dev server
-       - npm run dev
+### Backend Setup
+```bash
+# Clone the backend repository
+git clone https://github.com/Ingy10/kyle-ingham-brainflix.api.git
+cd kyle-ingham-brainflix.api
 
-- Usage:
+# Install dependencies
+npm install
 
-  After running the development server, you can view the application in your browser at http://localhost:5173/. This link may be different for other users so check your terminal for the link next to 'Local:' after you run the dev server. The application will automatically reload if you make changes to the source code.
+# Start the server
+node --watch index.js
+```
 
-- Project Structure
+## 📐 Architecture
 
-  Brainflix-Kyle-Ingham
+### Frontend Structure
+```
+src/
+├── assets/          # Static assets (fonts, icons, images)
+├── components/      # Reusable React components
+├── pages/          # Page components
+├── styles/         # SASS styles
+└── utils/          # Utility functions
+```
 
-  - public
-  - src
-    - assets
-      - fonts
-      - icons
-      - images
-      - logo
-    - components
-      - header
-        - nav-bar
-      - main
-        - Comments
-          - Comments Section
-      - Footer
-    - data
-    - pages
-      - HomePage
-      - VideoDetailsPage
-      - VideoUploadPage
-    - styles
-      - partials
-  - .gitignore
-  - eslint.config.js
-  - package-lock.json
-  - package.json
-  - readme.md
-  - vite.config.js
+### Backend Structure
+```
+server/
+├── data/           # JSON data storage
+├── public/         # Static files
+├── routes/         # API route handlers
+└── middleware/     # Custom middleware
+```
+
+## 🔌 API Endpoints
+
+```javascript
+GET    /api/videos          # Get all videos
+GET    /api/videos/:id      # Get specific video
+POST   /api/videos          # Upload new video
+POST   /api/videos/comments # Add comment
+DELETE /api/comments/:id    # Delete comment
+```
+
+## 💡 Key Features Explained
+
+### Video Player
+- Custom video controls
+- Dynamic content loading
+- Automatic next video suggestions
+- View count tracking
+
+### Comment System
+- Real-time comment posting
+- Comment deletion functionality
+- Timestamp formatting
+- Like/dislike functionality
+
+### Upload System
+- Image thumbnail upload
+- Form validation
+- Progress tracking
+- Success notifications
+
+## 🎯 Future Enhancements
+
+- [ ] User authentication system
+- [ ] Video categories and tags
+- [ ] Advanced search functionality
+- [ ] Social sharing features
+- [ ] Analytics dashboard
+
+## 🔨 Development
+
+### Prerequisites
+- Node.js >= 14.0.0
+- npm >= 6.14.0
+
+### Environment Variables
+```env
+# Frontend (.env)
+VITE_API_URL=http://localhost:8080
+
+# Backend (.env)
+PORT=8080
+CORS_ORIGIN=http://localhost:5173
+```
+
+## 📚 Learning Outcomes
+
+- React component architecture
+- State management
+- REST API development
+- File upload handling
+- Full-stack integration
+- Responsive design implementation
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+---
+
+## 🤝 Connect With Me
+
+- [LinkedIn](https://www.linkedin.com/in/kyle-ingham/)
+
+---
+
+Made with ❤️ by Kyle Ingham
