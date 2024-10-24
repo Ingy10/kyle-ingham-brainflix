@@ -2,11 +2,11 @@
 
 A full-stack video streaming platform prototype built with React and Express, featuring dynamic content loading, video playback, and user interactions.
 
-## 🌟 Live Demo
+## 🌟 Screenshots
 
-[Project Screenshot - Landing Page](./assets/screenshots/"BrainFlix Kyle Ingham - Main Page.png")
+[Project Screenshot - Landing Page](./src/assets/screenshots/BrainFlix%20Kyle%20Ingham%20-%20Main%20Page.png)
 
-[Project Screenshot - Upload Page](./assets/screenshots/"BrainFlix Kyle Ingham - Upload Page.png")
+[Project Screenshot - Upload Page](./src/assets/screenshots/BrainFlix%20Kyle%20Ingham%20-%20Upload%20Page.png)
 
 ## ⚡ Key Features
 
